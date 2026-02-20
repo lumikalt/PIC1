@@ -1,0 +1,33 @@
+/* colors */
+/* Retro-futuristic palette */
+$fg: #f8f7ff;
+$bg: #071029; /* deep-space navy */
+$bg-accent: #0b1026; /* panel base */
+$glass: rgba(255,255,255,0.03);
+$shade: #221233;
+$accent1: #00f0ff; /* neon cyan */
+$accent2: #ff66d9; /* neon magenta */
+$accent3: #9a7cff; /* neon purple */
+
+/* shadows */
+/* neon shadows */
+$accent1-shadow-light: 0 0 6px rgba(0,240,255,0.6);
+$accent1-shadow-heavy: 0 0 2px $accent1, 0 0 18px rgba(0,240,255,0.25);
+$accent2-shadow-light: 0 0 6px rgba(255,102,217,0.6);
+$accent2-shadow-heavy: 0 0 2px $accent2, 0 0 18px rgba(255,102,217,0.18);
+$accent3-shadow-heavy: 0 0 2px $accent3, 0 0 16px rgba(154,124,255,0.14);
+
+/* fonts */
+$title: "Corpta", sans-serif;
+$body: "Inter", sans-serif;
+
+/* layout tokens */
+$max-width: 900px;
+$gutter: 1.25rem;
+
+@font-face {
+  font-family: "Corpta";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/Corpta/Corpta.otf") format("opentype");
+}

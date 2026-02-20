@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+
+const github = "https://github.com/lumikalt";
+
+const blog = await getCollection("blog");
+const blogPosts = blog
+  .sort((a, b) =>
+    a.data.title.localeCompare(b.data.title, undefined, {
+      sensitivity: "base",
+    }),
+  )
+  .map((post) => ({
+    title: post.data.title,
+    url: `/blog/${post.slug}/`,
+  }));
+---
+
+<div class="nav-bar">
+  <nav>
+    <a href="/" target="_self">~</a>/
+
+    <ul>
+      <li><a href="/about" target="_self">About Us</a></li>
+      <li><a href="/blog" target="_self">Posts</a></li>
+      <ul>
+        {
+          blogPosts.map((post) => (
+            <li class="depth-2">
+              <a href={post.url} target="_self">
+                {post.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <li><a href="/changelog" target="_self">Changelog</a></li>
+      <li><a href={github} target="_blank" rel="noreferrer">Github</a></li>
+    </ul>
+  </nav>
+</div>

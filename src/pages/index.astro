@@ -1,0 +1,31 @@
+---
+import "../styles/style.scss";
+
+import BaseHead from "../components/BaseHead.astro";
+import NavBar from "../components/NavBar.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title="lumi" description="" author="lumi" />
+  </head>
+
+  <body>
+    <NavBar />
+
+    <div class="frame">
+      <article>
+        <header class="center">
+          <h1 transition:animate="slide">PIC1 — Name Here Later</h1>
+        </header>
+
+        <main transition:animate="slide">
+          <p>
+            The website is currently under construction. Please check back later.
+          </p>
+        </main>
+      </article>
+    </div>
+  </body>
+</html>

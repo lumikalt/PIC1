@@ -1,0 +1,54 @@
+---
+import "../styles/style.scss";
+
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import NavBar from "../components/NavBar.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, date, latex = false } = Astro.props;
+
+// TODO!: check our group number
+
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      author={"Grupo ?"}
+      needsLatex={latex}
+    />
+  </head>
+
+  <body>
+    <NavBar />
+
+    <div class="frame">
+      <article>
+        <header class="center">
+          <h2 transition:animate="slide">{title}</h2>
+        </header>
+
+        <main transition:animate="slide">
+          <time>
+            {
+              date.toLocaleDateString("zh", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric"
+              })
+            }
+          </time>
+
+          <hr />
+          <div class="blog">
+            <slot />
+          </div>
+        </main>
+      </article>
+    </div>
+  </body>
+</html>

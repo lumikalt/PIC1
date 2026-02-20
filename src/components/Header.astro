@@ -1,0 +1,35 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+
+let { pathname } = Astro.url;
+if (pathname.endsWith("/") && pathname !== "/") {
+  pathname = pathname.slice(0, -1);
+}
+
+const up: string = pathname.replace(/(.*)\/.*/, "$1");
+---
+
+<header>
+  <h2>
+    {SITE_TITLE}
+  </h2>
+  <nav>
+    <HeaderLink href="/">home</HeaderLink>
+    <HeaderLink href="/blog">blog</HeaderLink>
+    {up === "" || up === "/blog" ? null : <HeaderLink href={up}>up</HeaderLink>}
+  </nav>
+</header>
+<style>
+  header {
+    margin: 0em 0 2em;
+  }
+  h2 {
+    margin: 0.5em 0;
+  }
+
+  nav a {
+    font-size: 2rem;
+    margin-right: 20px;
+  }
+</style>

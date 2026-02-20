@@ -1,0 +1,30 @@
+---
+import "../styles/style.scss";
+
+import BaseHead from "../components/BaseHead.astro";
+import NavBar from "../components/NavBar.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title="about" description="" author="PIC1" />
+  </head>
+
+  <body>
+    <NavBar />
+
+    <div class="frame">
+      <article>
+        <header class="center">
+          <h2 transition:animate="slide">About Us</h2>
+        </header>
+
+        <main transition:animate="slide">
+          <h1>Who are we?</h1>
+
+        </main>
+      </article>
+    </div>
+  </body>
+</html>

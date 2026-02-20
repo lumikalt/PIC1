@@ -1,0 +1,30 @@
+---
+import "../styles/style.scss";
+
+import BaseHead from "../components/BaseHead.astro";
+import NavBar from "../components/NavBar.astro";
+import Changelog from "../components/Changelog.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title="changelog" description="" author="PIC1" />
+  </head>
+
+  <body>
+    <NavBar />
+
+    <div class="frame">
+      <article>
+        <header class="center">
+          <h1 transition:animate="slide">Changelog</h1>
+        </header>
+
+        <main transition:animate="slide">
+          <Changelog />
+        </main>
+      </article>
+    </div>
+  </body>
+</html>
