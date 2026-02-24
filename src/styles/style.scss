@@ -9,10 +9,136 @@
   -webkit-box-sizing: border-box;
 }
 
-h1 {
+/* crt effect */
 
+html::before,
+html::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+html::before {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.02),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.02)
+    );
+  background-size: 100% 2px, 3px 100%;
+}
+
+html::after {
+  background: rgba(16, 18, 18, 0.2);
+  opacity: 0;
+  animation: flicker 0.15s infinite;
+}
+
+.scan-line {
+  position: fixed;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-bottom: 2px solid #666;
+  animation: scan 2.8s infinite steps(48);
+  z-index: 1;
+}
+
+.nav-bar {
+  padding: 12px;
+  min-width: 240px;
+  width: 240px;
+  height: 100%;
+  background-color: $bgitem;
+  border-right: $border;
+  font-family: "DepartureMono", monospace;
+  font-size: 30px;
+  line-height: 35px;
+  text-shadow: $accent1-shadow-light;
+  color: $fg;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 20px $accent1;
+  box-shadow: 0px 0px 64px -28px $fg;
+  z-index: 1;
+
+  a {
+    color: $accent1;
+    text-shadow: $accent1-shadow-light;
+    transition: $q-glow;
+    text-decoration: none;
+
+    &:hover {
+      text-shadow: $accent1-shadow-heavy;
+      transition: $q-glow;
+    }
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+
+    li::before {
+      content: "├";
+      margin-right: 12px;
+    }
+    li:last-child::before {
+      content: "└";
+      margin-right: 12px;
+    }
+
+    .depth-2::before {
+      content: "│ ├";
+    }
+    .depth-2:last-child::before {
+      content: "│ └";
+    }
+  }
+
+  nav a[href^="https://"]
+  {
+    color: $accent2;
+    text-shadow: $accent2-shadow-light;
+
+    &:hover {
+      text-shadow: $accent2-shadow-heavy;
+    }
+  }
+}
+
+/* Content */
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  height: 100dvh;
+
+  font-family: "DepartureMono", monospace;
+  font-size: 25px;
+  line-height: 30px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  hyphens: auto;
+}
+
+h1 {
   font-size: 2.5em;
+  line-height: 1em;
   margin: auto 0;
+  padding-block: 1rem;
   font-family: $title;
   color: $fg;
 }
@@ -23,64 +149,29 @@ h2 {
   color: $fg;
 }
 
-body {
-  font-family: $body;
-  color: $fg;
+.frame {
+  position: relative;
+  width: 100%;
+  border: none;
+  padding: 16px;
+  height: 100%;
   background-color: $bg;
-  background-image: radial-gradient(circle at 10% 10%, rgba(154,124,255,0.06), transparent 10%),
-    linear-gradient(180deg, rgba(9,18,40,0.6), rgba(2,6,18,0.9));
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow: auto; /* ← scroll inside this area */
+}
+
+article {
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-inline: 16px;
+  color: $fg;
+  font-size: 30px;
+  font-family: "DepartureMono", monospace;
+  line-height: 2.5rem;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  justify-content: space-between;
 }
 
-.frame {
-  width: 100%;
-  max-width: $max-width;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border: 1px solid rgba(255,255,255,0.03);
-  box-shadow: 0 8px 30px rgba(2,6,18,0.6);
-  border-radius: 8px;
-}
-
-.nav-bar nav a,
-header nav a,
-.nav-bar nav a:visited {
-  color: $fg;
-  text-decoration: none;
-  padding: 0.2rem 0.4rem;
-  position: relative;
-}
-
-.nav-bar nav a:hover,
-header nav a:hover {
-  color: $accent1;
-  text-shadow: $accent1-shadow-heavy;
-}
-
-.scan-line {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 2px;
-  pointer-events: none;
-  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.0));
-  mix-blend-mode: overlay;
-  animation: scan 6s linear infinite;
-}
-
-@keyframes scan {
-  0% { transform: translateY(-5%); opacity: 0; }
-  10% { opacity: 0.3; }
-  50% { transform: translateY(105%); opacity: 0; }
-  100% { transform: translateY(105%); opacity: 0; }
-}
 
 .blog {
   @include meta.load-css("blog.scss");

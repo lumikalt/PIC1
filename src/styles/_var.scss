@@ -2,12 +2,24 @@
 /* Retro-futuristic palette */
 $fg: #f8f7ff;
 $bg: #071029; /* deep-space navy */
+$bgitem: #080d18;
 $bg-accent: #0b1026; /* panel base */
 $glass: rgba(255,255,255,0.03);
 $shade: #221233;
 $accent1: #00f0ff; /* neon cyan */
 $accent2: #ff66d9; /* neon magenta */
 $accent3: #9a7cff; /* neon purple */
+
+/* stuff */
+$border: 2px solid $fg;
+
+/* animations */
+$q-move: 160ms ease-in-out;
+$q-glow: 240ms ease-in-out;
+@media (prefers-reduced-motion: reduce) {
+  $q-glow: 0;
+  $q-move: 0;
+}
 
 /* shadows */
 /* neon shadows */
@@ -18,16 +30,19 @@ $accent2-shadow-heavy: 0 0 2px $accent2, 0 0 18px rgba(255,102,217,0.18);
 $accent3-shadow-heavy: 0 0 2px $accent3, 0 0 16px rgba(154,124,255,0.14);
 
 /* fonts */
-$title: "Corpta", sans-serif;
-$body: "Inter", sans-serif;
-
-/* layout tokens */
-$max-width: 900px;
-$gutter: 1.25rem;
+$title: "Corpta", monospace;
+$body: "DepartureMono", monospace;
 
 @font-face {
   font-family: "Corpta";
   font-style: normal;
   font-weight: 700;
   src: url("/fonts/Corpta/Corpta.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "DepartureMono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/DepartureMono/DepartureMono-Regular.woff2") format("woff2");
 }
