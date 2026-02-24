@@ -6,20 +6,57 @@ date: 2026.02.19
 
 # Website
 
-- [x] Start
+- [x] Deploy
 - [ ] Pick colors
-- [ ] Pick a proper icon
+- [ ] Logo
+- [x] Weekply update template
 - [ ] Generate graphics for the sattelite and modules
   - [ ] Exploded view?
   - [ ] Photos
 
-# Sattelite
+# Hardware
 
-- [ ] List necessary components
-- [ ] Purchase them
-- [ ] Assemble test kits
-- [ ] Test ground station comms
+- [ ] Purchase Materials
+- [ ] Draw squematics & get PCBs
+- [ ] Assembly
+- [ ] 1st iteration testing
 
-# Meetings
+# Ground Station
 
-- [ ] Week 2 meeting
+- [ ] Program GS
+- [ ] Link budget
+- [ ] Test GS
+
+# Power Systems
+
+- [ ] Purchase
+- [ ] Power budget
+- [ ] Mount in HW
+
+# Structures
+
+- [ ] Exterior concept
+- [ ] Interior concept
+- [ ] CAD
+- [ ] Print
+- [ ] 1st iteration assembly
+
+# AOCS
+
+- [ ] Research rotation engines
+- [ ] Program rotation controller
+- [ ] MATLAB sensor simulation
+
+# Software
+
+- [ ] Program the ESP32
+- [ ] Serial comms between sensors and ESP32
+
+# Misc
+
+- [ ] Logo for the website
+- [ ] User Manual
+- [ ] User testing
+- [ ] Poster
+- [ ] Video
+- [ ] Mission Patches?
