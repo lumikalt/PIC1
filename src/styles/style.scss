@@ -172,7 +172,86 @@ article {
   justify-content: space-between;
 }
 
+/* Blog */
 
 .blog {
   @include meta.load-css("blog.scss");
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  html::after,
+  html::before {
+    animation: none;
+    display: none;
+  }
+
+  .scan-line {
+    display: none;
+    animation: none;
+  }
+
+  .frame::after,
+  .frame::before {
+    display: none;
+  }
+}
+
+/* Older browsers */
+
+@supports not (width: 100dvh) {
+  body {
+    height: 100vh;
+  }
+}
+
+/* Styling animations */
+
+@keyframes flicker {
+  0% {
+    opacity: 0.26;
+  }
+  5% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.26;
+  }
+}
+
+@keyframes scan {
+  from {
+    top: 0%;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Phones and tablets */
+
+@media (max-width: 700px) {
+  body {
+    flex-direction: column-reverse;
+  }
+
+  .nav-bar {
+    min-width: unset;
+    width: 100%;
+    border: 0;
+    max-height: 206px;
+    overflow-y: scroll;
+    border-top: $border;
+    overflow-x: hidden;
+  }
 }
