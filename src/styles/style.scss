@@ -178,6 +178,10 @@ article {
   @include meta.load-css("blog.scss");
 }
 
+.home {
+  @include meta.load-css("home.scss");
+}
+
 /* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {

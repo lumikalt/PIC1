@@ -11,12 +11,63 @@ import NavBar from "../components/NavBar.astro";
     <BaseHead title="PocketQube for Education" description="" author="PIC1" />
   </head>
 
-  <body>
+  <body class="home">
     <div class="scan-line"></div>
 
     <NavBar />
 
     <div class="frame">
+      <div class="pixel-earth" aria-hidden="true">
+        <!-- Orbit (ellipse) placed behind the earth -->
+        <svg
+          class="orbit-svg"
+          viewBox="0 0 100 60"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <ellipse
+            cx="50"
+            cy="30"
+            rx="46"
+            ry="18"
+            fill="none"
+            stroke="#000066"
+            stroke-width="1"
+            stroke-opacity="0.9"></ellipse>
+          <!-- satellite square placed on the orbit path -->
+          <g class="satellite-on-orbit" transform="translate(60,18)">
+            <rect
+              x="0"
+              y="0"
+              width="8"
+              height="8"
+              rx="1"
+              ry="1"
+              fill="#ffffff"
+              stroke="#e2e8f0"
+              stroke-width="0.5"></rect>
+            <text
+              x="4"
+              y="6"
+              font-family="DepartureMono, monospace"
+              font-size="6"
+              font-weight="700"
+              text-anchor="middle"
+              fill="#0f172a">S4S</text
+            >
+          </g>
+        </svg>
+
+        <div class="earth-wrap" style="background-image: url('/earth.png');">
+        </div>
+        
+        <!-- visible square logo that orbits / overlays the earth (kept as fallback but hidden) -->
+        <div class="satellite-logo" aria-hidden="true" style="display:none;">
+          <span>S4S</span>
+        </div>
+      </div>
+
       <article>
         <header class="center">
           <h1 transition:animate="slide">PocketQube for Education</h1>
@@ -37,7 +88,7 @@ import NavBar from "../components/NavBar.astro";
             thousand small satellites are already orbiting the Earth.
           </p>
 
-          <hr>
+          <hr />
 
           <h2>Our Plans</h2>
 

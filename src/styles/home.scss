@@ -1,0 +1,112 @@
+@use "./var" as *;
+
+/* Black → normal background gradient only for the main page */
+.frame {
+  position: relative; /* ensure pseudo element positions correctly */
+  /* reserve space at the top so the fixed earth doesn't overlap content */
+
+    padding-top: clamp(300px, 35vh, 500px);
+}
+
+.frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* gradient from black to the site's normal background color */
+  background: linear-gradient(180deg, #000000 0%, $bg 85%);
+  z-index: 0;
+}
+
+.frame > * {
+  position: relative;
+  z-index: 1;
+}
+
+.pixel-earth {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  pointer-events: none;
+}
+
+.pixel-earth .earth-wrap {
+  width: clamp(200px, 42vw, 680px);
+  height: clamp(120px, 22vw, 340px); /* show only lower portion */
+  overflow: hidden;
+  position: relative;
+
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  /* scale the image so only the bottom half is visible inside the box */
+  background-size: auto 200%;
+}
+
+.pixel-earth .satellite-logo {
+  position: relative;
+  /* example placement — adjust later when adding actual logo */
+  top: 0%;
+  right: 10%;
+  width: clamp(48px, 7vw, 140px);
+  height: clamp(48px, 7vw, 140px);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #fff 0%, #e6edf2 100%);
+  color: #0f172a;
+  font-weight: 700;
+  font-family: "DepartureMono", monospace;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.45);
+  transform: translate(0, 0) rotate(-6deg);
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  z-index: 3;
+}
+
+.pixel-earth .satellite-logo span {
+  display: block;
+  font-size: clamp(12px, 2.8vw, 36px);
+  line-height: 1;
+  z-index: 3;
+}
+
+/* Orbit styling */
+.pixel-earth .orbit-svg {
+  position: absolute;
+  left: 50%;
+  top: 40%; /* move orbit down to align with visible bottom half */
+  width: 120%;
+  height: auto;
+  transform: translate(-50%, -50%) rotate(-14deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pixel-earth .earth-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+/* style the satellite placed inside the orbit SVG */
+.pixel-earth .orbit-svg .satellite-on-orbit rect {
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.45));
+}
+.pixel-earth .orbit-svg .satellite-on-orbit text {
+  font-family: "DepartureMono", monospace;
+  font-weight: 700;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .frame {
+    padding-top: clamp(100px, 20vh, 200px);
+  }
+}
