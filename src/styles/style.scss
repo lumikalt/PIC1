@@ -72,18 +72,6 @@ html::after {
   box-shadow: 0px 0px 64px -28px $fg;
   z-index: 10;
 
-  a {
-    color: $accent1;
-    text-shadow: $accent1-shadow-light;
-    transition: $q-glow;
-    text-decoration: none;
-
-    &:hover {
-      text-shadow: $accent1-shadow-heavy;
-      transition: $q-glow;
-    }
-  }
-
   nav ul {
     list-style-type: none;
     padding-left: 0;
@@ -105,16 +93,6 @@ html::after {
       content: "│ └";
     }
   }
-
-  nav a[href^="https://"]
-  {
-    color: $accent2;
-    text-shadow: $accent2-shadow-light;
-
-    &:hover {
-      text-shadow: $accent2-shadow-heavy;
-    }
-  }
 }
 
 /* Content */
@@ -132,6 +110,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   hyphens: auto;
+}
+
+a {
+  color: $accent1;
+  text-shadow: $accent1-shadow-light;
+  transition: $q-glow;
+  text-decoration: none;
+
+  &:hover {
+    text-shadow: $accent1-shadow-heavy;
+    transition: $q-glow;
+  }
+}
+
+a[href^="https://"]
+{
+  color: $accent2;
+  text-shadow: $accent2-shadow-light;
+
+  &:hover {
+    text-shadow: $accent2-shadow-heavy;
+  }
 }
 
 h1 {
