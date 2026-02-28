@@ -9,7 +9,7 @@ date: 2026.02.19
 - [x] Deploy
 - [ ] Pick colors
 - [ ] Logo
-- [x] Weekply update template
+- [x] Weekly update template
 - [ ] Generate graphics for the sattelite and modules
   - [ ] Exploded view?
   - [ ] Photos
