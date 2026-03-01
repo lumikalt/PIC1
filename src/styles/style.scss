@@ -162,14 +162,18 @@ h1 {
   padding-block: 1rem;
   font-family: $title;
   color: $fg;
-  padding-block-start: 2rem;
 }
 
 h2 {
   font-size: 1.5em;
   font-family: $title;
   color: $fg;
-  padding-block-start: 2rem;
+}
+
+.separator {
+  border: none;
+  border-top: $border;
+  margin-block: 3rem;
 }
 
 .frame {
