@@ -5,12 +5,12 @@ import BlogPost from "../../../layouts/BlogPost.astro";
 type Props = CollectionEntry<"blog">;
 
 export async function getStaticPaths() {
-  const pages = await getCollection("blog");
+  const posts = await getCollection("blog");
 
-  return pages.map((page) => {
-    const [lang, ...slug] = page.id.split("/");
-    return { params: { lang, slug: slug.join("/") || undefined }, props: page };
-  });
+  return posts.map((post: Props) => ({
+    params: { slug: post.slug || undefined },
+    props: post,
+  }));
 }
 
 const post = Astro.props;

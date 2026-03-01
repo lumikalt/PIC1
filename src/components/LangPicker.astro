@@ -18,7 +18,7 @@ if (pathWithoutLang === "//" || pathWithoutLang === "") pathWithoutLang = "/";
     Object.entries(languages).map(([l, label]) => (
       <>
         {l === currentLang ? (
-          <a class="inactive">{label}</a>
+          <span class="inactive">{label}</span>
         ) : (
           <a href={useTranslatedPath(l as any)(pathWithoutLang)}>{label}</a>
         )}

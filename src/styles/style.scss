@@ -105,14 +105,15 @@ nav {
       text-shadow: $accent1-shadow-heavy;
       transition: $q-glow;
     }
-
-    .inactive {
-      color: $accent1;
-      text-shadow: $accent1-shadow-light;
-      opacity: 0.5;
+  }
+  
+  .inactive {
+    font-size: 20px;
+      color: white;
+      text-shadow: none;
+      opacity: 0.9;
       pointer-events: none;
     }
-  }
 }
 
 /* Content */
