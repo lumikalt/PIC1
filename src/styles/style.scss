@@ -199,6 +199,31 @@ article {
   justify-content: space-between;
 }
 
+/* Student photo placeholder layout */
+.student {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.photo-placeholder {
+  width: 200px;
+  height: 200px;
+  background-color: #333;
+  border: 2px solid rgba(255,255,255,0.04);
+  flex: 0 0 200px;
+}
+
+.student-info h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.05em;
+}
+
+.student-info p {
+  margin: 0 0 0.75rem 0;
+}
+
 /* Blog */
 
 .blog {
