@@ -4,6 +4,7 @@ import "../styles/style.scss";
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import NavBar from "../components/NavBar.astro";
+import Base from "./Base.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -13,7 +14,7 @@ const { title, description, date, latex = false } = Astro.props;
 
 ---
 
-<html lang="en">
+<Base>
   <head>
     <BaseHead
       title={title}
@@ -53,4 +54,4 @@ const { title, description, date, latex = false } = Astro.props;
       </article>
     </div>
   </body>
-</html>
+</Base>

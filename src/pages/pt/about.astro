@@ -1,0 +1,83 @@
+---
+import "../../styles/style.scss";
+
+import BaseHead from "../../components/BaseHead.astro";
+import NavBar from "../../components/NavBar.astro";
+---
+
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <BaseHead title="Sobre Nós" description="" author="PIC1" />
+  </head>
+
+  <body>
+    <div class="scan-line"></div>
+
+    <NavBar />
+
+    <div class="frame">
+      <article>
+        <header class="center">
+          <h2 transition:animate="slide">Sobre Nós</h2>
+        </header>
+
+        <main transition:animate="slide">
+          <h1>Equipa</h1>
+
+          <h3>Cristina Wang - ist1109386 - Placas</h3>
+
+          Fazer os PCBs em Kicad, pesquisar e encomendar componentes, construir
+          a placa de protótipo.
+
+          <hr />
+
+          <h3>Lexin Weng - ist1110627 - Estrutura</h3>
+
+          Desenvolver o modelo exterior 3D, o layout interno geral e a
+          modularidade do design.
+
+          <hr />
+
+          <h3>Lumi Pereira - ist1109813 - ESP32 + Comunicação com ensores</h3>
+
+          Desenvolver o website, programar os micro-controladores e a
+          comunicação entre sensores.
+
+          <hr />
+
+          <h3>Sara Pereira - ist1109311 - Estação Terrestre</h3>
+
+          Pesquisar a Estação Terrestre, implementá-la no Arduino IDE e
+          programar a comunicação entre as antenas.
+
+          <hr />
+
+          <h3>Tiago Duanmu - ist1111173 - Eletricidade</h3>
+
+          Gerir o orçamento de energia do satélite, pesquisar painéis solares e
+          baterias, e projetar o sistema de energia e conexões.
+
+          <hr />
+
+          <h3>Yaqi Xu - ist1103762 - Algorítmos e Controlo</h3>
+
+          Pesquisar o uso de sensores, avaliar os resultados do projeto,
+          produzir o vídeo final e o poster.
+
+          <hr />
+
+          <h1>Professores</h1>
+
+          <strong>Consultor Científico</strong>: Professor Ayman Radwan
+          <br />
+          <strong>Co-Consultor Científico</strong>: Professora Mariana Santana
+          <br />
+          <strong>Coordenador</strong>: Professor Carlos Fernandes
+          <br />
+          <strong>Mentor</strong>: Professor João Felício
+        </main>
+      </article>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+---
+import { languages } from "../i18n/ui";
+import { useTranslatedPath } from "../i18n/utils";
+
+const { lang: currentLang } = Astro.props;
+
+// Get current path without a leading language segment (e.g. /pt/... -> /...)
+const pathname = Astro.url.pathname;
+const [, maybeLang, ...rest] = pathname.split("/");
+const hasLangPrefix =
+  maybeLang && Object.prototype.hasOwnProperty.call(languages, maybeLang);
+let pathWithoutLang = hasLangPrefix ? `/${rest.join("/")}` : pathname;
+if (pathWithoutLang === "//" || pathWithoutLang === "") pathWithoutLang = "/";
+---
+
+<ul class="lang-picker">
+  {
+    Object.entries(languages).map(([l, label]) => (
+      <>
+        {l === currentLang ? (
+          <a class="inactive">{label}</a>
+        ) : (
+          <a href={useTranslatedPath(l as any)(pathWithoutLang)}>{label}</a>
+        )}
+      </>
+    ))
+  }
+</ul>

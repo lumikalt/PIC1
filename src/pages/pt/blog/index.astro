@@ -1,17 +1,17 @@
 ---
-import "../../styles/style.scss";
+import "../../../styles/style.scss";
 
-import BaseHead from "../../components/BaseHead.astro";
-import NavBar from "../../components/NavBar.astro";
+import BaseHead from "../../../components/BaseHead.astro";
+import NavBar from "../../../components/NavBar.astro";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog"))
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
-  .filter((post) => post.data.lang === "en");
+  .filter((post) => post.data.lang === "pt");
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
   <head>
     <BaseHead title="Blog" description="" author="PIC1" />
   </head>
@@ -39,7 +39,7 @@ const posts = (await getCollection("blog"))
                       year: "numeric",
                     })}
                   </time>
-                  <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                  <a href={`/pt/blog/${post.slug}/`}>{post.data.title}</a>
                 </li>
               ))
             }

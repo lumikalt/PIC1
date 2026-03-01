@@ -2,6 +2,7 @@
 title: TODO
 description: "TODO log."
 date: 2026.02.19
+lang: en
 ---
 
 # Website

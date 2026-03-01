@@ -1,0 +1,138 @@
+---
+import "../../styles/style.scss";
+
+import BaseHead from "../../components/BaseHead.astro";
+import NavBar from "../../components/NavBar.astro";
+---
+
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <BaseHead title="Lab in a Cube" description="" author="PIC1" />
+  </head>
+
+  <body class="home">
+    <div class="scan-line"></div>
+
+    <NavBar />
+
+    <div class="frame">
+      <div class="pixel-earth" aria-hidden="true">
+        <!-- Orbit (ellipse) placed behind the earth -->
+        <svg
+          class="orbit-svg"
+          viewBox="0 0 100 60"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <ellipse
+            cx="50"
+            cy="30"
+            rx="46"
+            ry="18"
+            fill="none"
+            stroke="#000066"
+            stroke-width="1"
+            stroke-opacity="0.9"></ellipse>
+          <!-- satellite square placed on the orbit path -->
+          <g class="satellite-on-orbit" transform="translate(60,18)">
+            <rect
+              x="0"
+              y="0"
+              width="8"
+              height="8"
+              rx="1"
+              ry="1"
+              fill="#ffffff"
+              stroke="#e2e8f0"
+              stroke-width="0.5"></rect>
+            <text
+              x="4"
+              y="6"
+              font-family="DepartureMono, monospace"
+              font-size="6"
+              font-weight="700"
+              text-anchor="middle"
+              fill="#0f172a">S4S</text
+            >
+          </g>
+        </svg>
+
+        <div class="earth-wrap" style="background-image: url('/earth.png');">
+        </div>
+      </div>
+
+      <article>
+        <header class="center">
+          <h1 transition:animate="slide">Lab in a Cube / Lab num Cubo</h1>
+        </header>
+
+        <main transition:animate="slide">
+          <p>
+            O espaço tem atraído muito interesse por parte dos jovens estudantes
+            na estreia da Newspace Revolution (Nova Revolução do Espaço), a
+            democratização do acesso ao espaço por pequenas empresas,
+            universidades, etc.
+          </p>
+          <p>
+            Esta tendência explodiu desde a demonstração de voo em 2003 de um
+            satélite de 1 litro construído por estudantes universitários.
+          </p>
+          <p>
+            O custo de lançamento de satélites diminuiu desde então, e já
+            existem alguns milhares de pequenos satélites a orbitar a Terra.
+          </p>
+
+          <hr />
+
+          <h2>Planos</h2>
+
+          <p>
+            Desafiar os jovens estudantes a ver a eletrónica dentro dos
+            PocketQubes.
+          </p>
+          <p>
+            Construir um PocketQube DIY (Faça Por Si Só), onde os estudantes
+            possam experimentar diferentes combinações de sensores e layouts,
+            enviar comandos via computador como estação terrestre e ver os seus
+            efeitos.
+          </p>
+          <p>
+            Fazer o nosso PocketQube o mais barato e mais fácil de usar quanto
+            possível.
+          </p>
+          <p>
+            Esta abordagem DIY ao design e operação de satélites será uma
+            poderosa ferramenta educacional para ensinar os estudantes sobre
+            eletrónica de satélites e integração de sistemas, observando os
+            efeitos das escolhas de design, tudo enquanto aprendem através de
+            experiências práticas e interativas.
+          </p>
+
+          <hr />
+
+          <h2>Produto</h2>
+
+          <p>
+            Um satélite PocketQube de 5x5x5 cm com um design modular e
+            instruções de configuração, projetado para escolas e universidades
+            exporem os estudantes a este campo de engenharia, cativando assim a
+            próxima geração de engenheiros, particularmente os interessados em
+            eletrónica ou no espaço.
+          </p>
+
+          <p>
+            O satélite contém microcontroladores, uma variedade de sensores
+            (temperatura, pressão, magnetómetro, giroscópio, câmera), geração de
+            energia via painéis solares e um sistema de comunicação para enviar
+            dados para a estação terrestre improvisada, que pode ser construída
+            com um rádio definido por software e uma antena simples. É modular,
+            logo as camadas podem ser trocadas para testar diferentes
+            combinações de sensores e aplicações.
+          </p>
+        </main>
+      </article>
+    </div>
+  </body>
+</html>

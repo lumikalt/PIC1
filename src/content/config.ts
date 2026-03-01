@@ -7,10 +7,11 @@ const blog = defineCollection({
     date: z
       .string()
       .or(z.date())
-      .transform(val => new Date(val)),
+      .transform((val) => new Date(val)),
 
-    latex: z.boolean().optional()
-  })
+    latex: z.boolean().optional(),
+    lang: z.string().optional(),
+  }),
 });
 
 export const collections = { blog };
