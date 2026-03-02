@@ -2,7 +2,9 @@
 import "../styles/style.scss";
 
 import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
+import { Image } from "astro:assets";
 ---
 
 <!DOCTYPE html>
@@ -28,10 +30,20 @@ import NavBar from "../components/NavBar.astro";
           <hr class="separator" />
 
           <div class="student">
-            <div class="photo-placeholder" aria-hidden="true"></div>
+            <Image
+              src="/photos/cristina.jpg"
+              alt=""
+              width={200}
+              height={200}
+              loading="lazy"
+            />
+
             <div class="student-info">
               <h3>Cristina Wang - ist1109386 - Boards</h3>
-              <p>Making the PCBs in Kicad, researching and ordering components, building the prototype board.</p>
+              <p>
+                Making the PCBs in Kicad, researching and ordering components,
+                building the prototype board.
+              </p>
             </div>
           </div>
 
@@ -41,7 +53,10 @@ import NavBar from "../components/NavBar.astro";
             <div class="photo-placeholder" aria-hidden="true"></div>
             <div class="student-info">
               <h3>Lexin Weng - ist1110627 - Box Structure</h3>
-              <p>Making 3D exterior model, the general internal layout, and the modularity of the design.</p>
+              <p>
+                Making 3D exterior model, the general internal layout, and the
+                modularity of the design.
+              </p>
             </div>
           </div>
 
@@ -51,27 +66,48 @@ import NavBar from "../components/NavBar.astro";
             <div class="photo-placeholder" aria-hidden="true"></div>
             <div class="student-info">
               <h3>Lumi Pereira - ist1109813 - ESP32 + Serial Comms</h3>
-              <p>Writing the website, programming the micro-controllera, and comms between sensors.</p>
+              <p>
+                Writing the website, programming the micro-controllera, and
+                comms between sensors.
+              </p>
             </div>
           </div>
 
           <hr class="separator" />
 
           <div class="student">
-            <div class="photo-placeholder" aria-hidden="true"></div>
+            <Image
+              src="/photos/sara.png"
+              alt=""
+              width={200}
+              height={200}
+              loading="lazy"
+            />
             <div class="student-info">
               <h3>Sara Pereira - ist1109311 - Ground Station</h3>
-              <p>Researching the Ground Station, implementing it in Arduino IDE, and programming comms between the antennas.</p>
+              <p>
+                Researching the Ground Station, implementing it in Arduino IDE,
+                and programming comms between the antennas.
+              </p>
             </div>
           </div>
 
           <hr class="separator" />
 
           <div class="student">
-            <div class="photo-placeholder" aria-hidden="true"></div>
+            <Image
+              src="/photos/tiago.png"
+              alt=""
+              width={200}
+              height={200}
+              loading="lazy"
+            />
             <div class="student-info">
               <h3>Tiago Duanmu - ist1111173 - Power</h3>
-              <p>Managing the satellite power budget, researching solar panels and batteries, and designing the power system and connections.</p>
+              <p>
+                Managing the satellite power budget, researching solar panels
+                and batteries, and designing the power system and connections.
+              </p>
             </div>
           </div>
 
@@ -81,7 +117,10 @@ import NavBar from "../components/NavBar.astro";
             <div class="photo-placeholder" aria-hidden="true"></div>
             <div class="student-info">
               <h3>Yaqi Xu - ist1103762 - Algorithms and Control</h3>
-              <p>Researching sensor usage, evaluating the project results, producing the final video, and poster.</p>
+              <p>
+                Researching sensor usage, evaluating the project results,
+                producing the final video, and poster.
+              </p>
             </div>
           </div>
 
@@ -105,6 +144,8 @@ import NavBar from "../components/NavBar.astro";
             <strong>Mentor</strong>: Professor João Felício
           </p>
         </main>
+
+        <Footer />
       </article>
     </div>
   </body>

@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
 import LangPicker from "./LangPicker.astro";
+import { Image } from "astro:assets";
 
 const github = "https://github.com/lumikalt/pic1";
 
@@ -23,4 +24,5 @@ const translatePath = useTranslatedPath(lang);
       <li><a href={github} target="_blank" rel="noreferrer">Github</a></li>
     </ul>
   </div>
+  <Image src="/logo.png" alt="PIC1 logo" class="nav-logo" width="100px" height="100px" />
 </nav>

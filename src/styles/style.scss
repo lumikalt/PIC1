@@ -90,6 +90,35 @@ nav {
   }
 }
 
+/* Logo placement: show in nav on desktop, show in footer on mobile */
+
+.nav-logo {
+  display: block;
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+  margin: 12px auto;
+  align-self: center;
+}
+
+footer .nav-logo {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  /* hide in nav on small screens, show in footer */
+  nav .nav-logo {
+    display: none;
+  }
+
+  footer .nav-logo {
+    display: block !important;
+    width: 250px;
+    height: auto;
+    margin: 12px auto;
+  }
+}
+
 .lang-picker {
   display: flex;
   flex-direction: column;
@@ -213,6 +242,16 @@ article {
   background-color: #333;
   border: 2px solid rgba(255,255,255,0.04);
   flex: 0 0 200px;
+}
+
+/* Ensure actual images match placeholder size and crop nicely */
+.student picture,
+.student img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  flex: 0 0 200px;
+  border: 2px solid rgba(255,255,255,0.04);
 }
 
 .student-info h3 {
