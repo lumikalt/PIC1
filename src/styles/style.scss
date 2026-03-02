@@ -105,6 +105,30 @@ footer .nav-logo {
   display: none;
 }
 
+/* IST badge in the nav above the language picker */
+.nav-badge {
+  display: block;
+  width: 140px;
+  height: auto;
+  margin: 8px auto;
+  object-fit: contain;
+}
+
+/* Badge to show at the side of the footer on desktop */
+.footer-badge {
+  display: none; /* default hidden; shown on wider screens */
+  width: 120px;
+  height: auto;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+footer {
+  position: relative;
+}
+
 @media (max-width: 700px) {
   /* hide in nav on small screens, show in footer */
   nav .nav-logo {
@@ -116,6 +140,18 @@ footer .nav-logo {
     width: 250px;
     height: auto;
     margin: 12px auto;
+  }
+
+  /* keep IST badge hidden on small screens to avoid overlap */
+  .footer-badge {
+    display: none;
+  }
+}
+
+@media (min-width: 701px) {
+  /* show footer-side badge on larger screens */
+  .footer-badge {
+    display: block;
   }
 }
 

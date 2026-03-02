@@ -1,5 +1,9 @@
 ---
-import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from "../i18n/utils";
 import LangPicker from "./LangPicker.astro";
 import { Image } from "astro:assets";
 
@@ -14,15 +18,35 @@ const translatePath = useTranslatedPath(lang);
   <div>
     <LangPicker lang={lang} />
 
-    <hr>
+    <hr />
 
     <a href={translatePath("/")} target="_self"> {t("nav.home")}</a>
 
     <ul>
-      <li><a href={translatePath("/about")} target="_self">{t("nav.about")}</a></li>
-      <li><a href={translatePath("/blog")} target="_self">{t("nav.posts")}</a></li>
+      <li>
+        <a href={translatePath("/about")} target="_self">{t("nav.about")}</a>
+      </li>
+      <li>
+        <a href={translatePath("/blog")} target="_self">{t("nav.posts")}</a>
+      </li>
       <li><a href={github} target="_blank" rel="noreferrer">Github</a></li>
     </ul>
   </div>
-  <Image src="/logo.png" alt="PIC1 logo" class="nav-logo" width="100px" height="100px" />
+
+  <div>
+    <Image
+      src="/Tecnico_ID_Principal_RBG-BRANCO.png"
+      alt="Instituto Superior Técnico"
+      class="nav-logo"
+      width="100px"
+      height="100px"
+    />
+    <Image
+      src="/logo.png"
+      alt="PIC1 logo"
+      class="nav-logo"
+      width="100px"
+      height="100px"
+    />
+  </div>
 </nav>
