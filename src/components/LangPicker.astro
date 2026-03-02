@@ -1,5 +1,5 @@
 ---
-import { languages } from "../i18n/ui";
+import { languages, defaultLang, showDefaultLang } from "../i18n/ui";
 import { useTranslatedPath } from "../i18n/utils";
 
 const { lang: currentLang } = Astro.props;
@@ -10,6 +10,10 @@ const [, maybeLang, ...rest] = pathname.split("/");
 const hasLangPrefix =
   maybeLang && Object.prototype.hasOwnProperty.call(languages, maybeLang);
 let pathWithoutLang = hasLangPrefix ? `/${rest.join("/")}` : pathname;
+// If the path is like /pt/blog/pt/slug remove the duplicated lang after /blog/
+if (hasLangPrefix && rest[0] === "blog" && rest[1] === maybeLang) {
+  pathWithoutLang = `/${["blog", ...rest.slice(2)].join("/")}`;
+}
 if (pathWithoutLang === "//" || pathWithoutLang === "") pathWithoutLang = "/";
 ---
 
@@ -18,10 +22,29 @@ if (pathWithoutLang === "//" || pathWithoutLang === "") pathWithoutLang = "/";
     Object.entries(languages).map(([l, label]) => (
       <>
         {l === currentLang ? (
-          <span class="inactive">{label}</span>
-        ) : (
-          <a href={useTranslatedPath(l as any)(pathWithoutLang)}>{label}</a>
-        )}
+            <span class="inactive">{label}</span>
+          ) : (
+            (() => {
+              // Adjust path for blog posts: if path starts with /blog and target
+              // language uses a language subfolder (e.g. /blog/pt/...), insert
+              // the language segment after /blog when it's missing.
+              let hrefPath = pathWithoutLang;
+              const segs = hrefPath.split("/").filter(Boolean);
+              // Only insert the language segment after /blog when the target
+              // language isn't already present and when it's appropriate to
+              // include the language folder (don't insert default `en` if
+              // `showDefaultLang` is false).
+              if (
+                segs[0] === "blog" &&
+                segs[1] !== l &&
+                (l !== defaultLang || showDefaultLang)
+              ) {
+                segs.splice(1, 0, l);
+                hrefPath = "/" + segs.join("/");
+              }
+              return <a href={useTranslatedPath(l as any)(hrefPath)}>{label}</a>;
+            })()
+          )}
       </>
     ))
   }
