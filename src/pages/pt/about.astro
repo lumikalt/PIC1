@@ -4,6 +4,7 @@ import "../../styles/style.scss";
 import BaseHead from "../../components/BaseHead.astro";
 import Footer from "../../components/Footer.astro";
 import NavBar from "../../components/NavBar.astro";
+import { Image } from "astro:assets";
 ---
 
 <!DOCTYPE html>
@@ -26,57 +27,129 @@ import NavBar from "../../components/NavBar.astro";
         <main transition:animate="slide">
           <h1>Equipa</h1>
 
-          <h3>Cristina Wang - ist1109386 - Placas</h3>
+          <hr class="separator" />
 
-          Fazer os PCBs em Kicad, pesquisar e encomendar componentes, construir
-          a placa de protótipo.
+          <div class="student">
+            <Image
+              src="/photos/cristina.jpg"
+              alt=""
+              width={200}
+              height={200}
+              loading="lazy"
+            />
+            <div class="student-info">
+              <h3>Cristina Wang - ist1109386 - Placas</h3>
+              <p>
+                Fazer os PCBs em Kicad, pesquisar e encomendar componentes,
+                construir a placa de protótipo.
+              </p>
+            </div>
+          </div>
 
-          <hr />
+          <hr class="separator" />
 
-          <h3>Lexin Weng - ist1110627 - Estrutura</h3>
+          <div class="student">
+            <Image
+              src="/photos/lexin.jpg"
+              alt=""
+              width={200}
+              height={200}
+              loading="lazy"
+            />
+            <div class="student-info">
+              <h3>Lexin Weng - ist1110627 - Estrutura</h3>
+              <p>
+                Desenvolver o modelo exterior 3D, o layout interno geral e a
+                modularidade do design.
+              </p>
+            </div>
+          </div>
 
-          Desenvolver o modelo exterior 3D, o layout interno geral e a
-          modularidade do design.
+          <hr class="separator" />
 
-          <hr />
+          <div class="student">
+            <div class="photo-placeholder" aria-hidden="true"></div>
+            <div class="student-info">
+              <h3>
+                Lumi Pereira - ist1109813 - ESP32 + Comunicação com sensores
+              </h3>
+              <p>
+                Desenvolver o website, programar os micro-controladores e a
+                comunicação entre sensores.
+              </p>
+            </div>
+          </div>
 
-          <h3>Lumi Pereira - ist1109813 - ESP32 + Comunicação com ensores</h3>
+          <hr class="separator" />
 
-          Desenvolver o website, programar os micro-controladores e a
-          comunicação entre sensores.
+          <div class="student">
+            <Image
+              src="/photos/sara.png"
+              alt=""
+              width={200}
+              height={200}
+              loading="lazy"
+            />
+            <div class="student-info">
+              <h3>Sara Pereira - ist1109311 - Estação Terrestre</h3>
+              <p>
+                Pesquisar a Estação Terrestre, implementá-la no Arduino IDE e
+                programar a comunicação entre as antenas.
+              </p>
+            </div>
+          </div>
 
-          <hr />
+          <hr class="separator" />
 
-          <h3>Sara Pereira - ist1109311 - Estação Terrestre</h3>
+          <div class="student">
+            <Image
+              src="/photos/tiago.png"
+              alt=""
+              width={200}
+              height={200}
+              loading="lazy"
+            />
+            <div class="student-info">
+              <h3>Tiago Duanmu - ist1111173 - Eletricidade</h3>
+              <p>
+                Gerir o orçamento de energia do satélite, pesquisar painéis
+                solares e baterias, e projetar o sistema de energia e conexões.
+              </p>
+            </div>
+          </div>
 
-          Pesquisar a Estação Terrestre, implementá-la no Arduino IDE e
-          programar a comunicação entre as antenas.
+          <hr class="separator" />
 
-          <hr />
+          <div class="student">
+            <Image
+              src="/photos/yaqi.jpg"
+              alt=""
+              width={200}
+              height={200}
+              loading="lazy"
+            />
+            <div class="student-info">
+              <h3>Yaqi Xu - ist1103762 - Algorítmos e Controlo</h3>
+              <p>
+                Pesquisar o uso de sensores, avaliar os resultados do projeto,
+                produzir o vídeo final e o poster.
+              </p>
+            </div>
+          </div>
 
-          <h3>Tiago Duanmu - ist1111173 - Eletricidade</h3>
-
-          Gerir o orçamento de energia do satélite, pesquisar painéis solares e
-          baterias, e projetar o sistema de energia e conexões.
-
-          <hr />
-
-          <h3>Yaqi Xu - ist1103762 - Algorítmos e Controlo</h3>
-
-          Pesquisar o uso de sensores, avaliar os resultados do projeto,
-          produzir o vídeo final e o poster.
-
-          <hr />
+          <hr class="separator" />
 
           <h1>Professores</h1>
 
-          <strong>Consultor Científico</strong>: Professor Ayman Radwan
-          <br />
-          <strong>Co-Consultor Científico</strong>: Professora Mariana Santana
-          <br />
-          <strong>Coordenador</strong>: Professor Carlos Fernandes
-          <br />
-          <strong>Mentor</strong>: Professor João Felício
+          <p>
+            <strong>Consultor Científico</strong>: Professor Ayman Radwan
+            <br />
+            <strong>Co-Consultor Científico</strong>: Professora Mariana Santana
+            <br />
+            <strong>Coordenador</strong>: Professor Carlos Fernandes
+            <br />
+            <strong>Mentor</strong>: Professor João Felício
+          </p>
         </main>
         <Footer />
       </article>
