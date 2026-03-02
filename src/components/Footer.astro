@@ -1,21 +1,32 @@
 ---
 import { Image } from "astro:assets";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer>
   <Image
     src="/logo.png"
-    alt="Logo of a hand holding a cubic sattelite, with stars in the background."
+    alt={t("alt.logo")}
     class="nav-logo"
     width="250"
     height="250"
   />
   <Image
     src="/Tecnico_ID_Principal_RBG-BRANCO.png"
-    alt="Instituto Superior Técnico Logo."
+    alt={t("alt.ist")}
     class="nav-logo"
     width="250"
     height="250"
+  />
+  <Image
+    src="/IT.png"
+    alt={t("alt.it")}
+    class="nav-logo"
+    width="100"
+    height="100"
   />
 </footer>
 <style>
@@ -24,5 +35,22 @@ import { Image } from "astro:assets";
     display: flex;
     justify-content: center;
     align-items: center;
+    /* allow items to wrap to the next line when space is constrained */
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* Make images responsive and prevent horizontal overflow */
+  .nav-logo {
+    max-width: 250px;
+    width: clamp(120px, 40vw, 250px);
+    height: auto;
+    display: block;
+  }
+
+  /* Ensure any picture/img inside footer never exceeds container width */
+  footer > :is(picture, img) {
+    max-width: 100%;
   }
 </style>

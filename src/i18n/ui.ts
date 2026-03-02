@@ -8,12 +8,17 @@ export const ui = {
     "nav.home": "Home",
     "nav.about": "About",
     "nav.posts": "Blog",
-    "nav.gituhb": "Twitter",
+    "alt.logo": "Logo of a hand holding a cubic sattelite, with stars in the background.",
+    "alt.ist": "Logo of Instituto Superior Técnico.",
+    "alt.it": "Logo of Institute of Telecommunications.",
   },
   pt: {
     "nav.home": "Projeto",
-    "nav.about": "Sobre Nós",
+    "nav.about": "Acerca",
     "nav.posts": "Blog",
+    "alt.logo": "Logo duma mão a segurar num satélite cúbico, com estrelas no fundo.",
+    "alt.ist": "Logo do Instituto Superior Técnico.",
+    "alt.it": "Logo do Instituto de Telecomunicações.",
   },
 } as const;
 
