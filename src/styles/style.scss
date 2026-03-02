@@ -74,19 +74,92 @@ nav {
   box-shadow: 0px 0px 64px -28px $fg;
   z-index: 10;
 
-  ul {
+  ul:not(.lang-picker) {
     list-style-type: none;
     padding-left: 0;
     margin: 0;
+    /* Render links as colored buttons instead of list with separators */
+    li {
+      margin: 6px 0;
+      text-align: center;
+    }
 
-    li::before {
-      content: "├";
-      margin-right: 12px;
+    /* Local links (internal) — outlined button with transparent background */
+    li a:not([target="_blank"]) {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-family: inherit;
+      background: transparent; /* transparent interior */
+      color: $fg; /* restore previous text color */
+      border: 3px solid $accent1; /* colored outline */
+      box-shadow: none;
+      transition: transform 160ms $q-move, box-shadow 160ms $q-glow, background 160ms $q-move;
+      cursor: pointer;
     }
-    li:last-child::before {
-      content: "└";
-      margin-right: 12px;
+
+    /* External links (open in new tab) — outlined button with transparent background */
+    li a[target="_blank"] {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-family: inherit;
+      background: transparent;
+      color: $fg;
+      border: 3px solid $accent2; /* pink outline */
+      box-shadow: none;
+      transition: transform 160ms $q-move, box-shadow 160ms $q-glow, background 160ms $q-move;
+      cursor: pointer;
     }
+
+    li a:active,
+    li a:focus {
+      transform: translateY(1px);
+      outline: none;
+    }
+  }
+
+  /* Top-level home link (not inside the list) — outlined and transparent like internal links */
+  > div > a[href] {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 8px 0 12px 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: transparent;
+    color: $fg;
+    border: 2px solid $accent1;
+    text-decoration: none;
+    text-align: left;
+  }
+
+  /* Hover/focus: pop and glow */
+  ul:not(.lang-picker) li a:hover,
+  ul:not(.lang-picker) li a:focus,
+  ul:not(.lang-picker) > div > a[href]:hover,
+  ul:not(.lang-picker) > div > a[href]:focus {
+    background: rgba(255,255,255,0.03);
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  /* Accent-specific glow */
+  ul:not(.lang-picker) li a:not([target="_blank"]):hover,
+  ul:not(.lang-picker) li a:not([target="_blank"]):focus,
+  ul:not(.lang-picker) > div > a[href]:hover,
+  ul:not(.lang-picker) > div > a[href]:focus {
+    box-shadow: $accent1-shadow-heavy;
+  }
+
+  ul:not(.lang-picker) li a[target="_blank"]:hover,
+  ul:not(.lang-picker) li a[target="_blank"]:focus {
+    box-shadow: $accent2-shadow-light;
   }
 }
 
