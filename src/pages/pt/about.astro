@@ -68,7 +68,13 @@ import { Image } from "astro:assets";
           <hr class="separator" />
 
           <div class="student">
-            <div class="photo-placeholder" aria-hidden="true"></div>
+            <Image
+              src="/photos/lumi.jpg"
+              alt=""
+              width={200}
+              height={200}
+              loading="lazy"
+            />
             <div class="student-info">
               <h3>
                 Lumi Pereira - ist1109813 - ESP32 + Comunicação com sensores
