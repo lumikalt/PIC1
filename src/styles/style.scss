@@ -100,7 +100,8 @@ nav {
       color: $fg; /* restore previous text color */
       border: 3px solid $accent1; /* colored outline */
       box-shadow: none;
-      transition: transform 160ms $q-move, box-shadow 160ms $q-glow, background 160ms $q-move;
+      transition: transform 160ms $q-move, box-shadow 160ms $q-glow,
+        background 160ms $q-move;
       cursor: pointer;
     }
 
@@ -117,7 +118,8 @@ nav {
       color: $fg;
       border: 3px solid $accent2; /* pink outline */
       box-shadow: none;
-      transition: transform 160ms $q-move, box-shadow 160ms $q-glow, background 160ms $q-move;
+      transition: transform 160ms $q-move, box-shadow 160ms $q-glow,
+        background 160ms $q-move;
       cursor: pointer;
     }
 
@@ -148,7 +150,7 @@ nav {
   ul:not(.lang-picker) li a:focus,
   ul:not(.lang-picker) > div > a[href]:hover,
   ul:not(.lang-picker) > div > a[href]:focus {
-    background: rgba(255,255,255,0.03);
+    background: rgba(255, 255, 255, 0.03);
     transform: translateY(-4px) scale(1.02);
   }
 
@@ -227,7 +229,7 @@ footer {
   .student {
     flex-direction: column;
     align-items: center;
-    
+
     gap: 12px;
   }
 
@@ -269,14 +271,14 @@ footer {
       transition: $q-glow;
     }
   }
-  
+
   .inactive {
     font-size: 20px;
-      color: white;
-      text-shadow: none;
-      opacity: 0.9;
-      pointer-events: none;
-    }
+    color: white;
+    text-shadow: none;
+    opacity: 0.9;
+    pointer-events: none;
+  }
 }
 
 /* Content */
@@ -310,8 +312,8 @@ a {
   }
 }
 
-a[href^="https://"]
-{
+a[href^="https://"],
+a[href^="mailto:"] {
   color: $accent2;
   text-shadow: $accent2-shadow-light;
 
@@ -366,42 +368,73 @@ article {
   justify-content: space-between;
 }
 
-/* Student photo placeholder layout */
 .student {
   display: flex;
   gap: 16px;
   align-items: flex-start;
   margin-bottom: 1rem;
+
+  picture,
+  img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    flex: 0 0 200px;
+    border: 2px solid rgba(255, 255, 255, 0.04);
+  }
+
+  h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.05em;
+  }
+
+  p {
+    margin: 0 0 0.75rem 0;
+  }
 }
 
-.photo-placeholder {
-  width: 200px;
-  height: 200px;
-  background-color: #333;
+/* Satellite diagram image: limit width and preserve aspect ratio */
+.satellite-diagram {
+  max-width: 800px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}
+
+/* Nav toggle (hamburger) */
+.nav-toggle {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 30;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.03);
+  color: $fg;
   border: 2px solid rgba(255,255,255,0.04);
-  flex: 0 0 200px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 22px;
 }
 
-/* Ensure actual images match placeholder size and crop nicely */
-.student picture,
-.student img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  flex: 0 0 200px;
-  border: 2px solid rgba(255,255,255,0.04);
+/* When navigation is hidden add this class to the body */
+body.nav-hidden nav {
+  display: none;
 }
 
-.student-info h3 {
-  margin: 0 0 0.25rem 0;
-  font-size: 1.05em;
+/* Ensure the hamburger is visible on small screens too */
+@media (max-width: 700px) {
+  .nav-toggle {
+    left: 8px;
+    top: 8px;
+  }
 }
 
-.student-info p {
-  margin: 0 0 0.75rem 0;
-}
-
-/* Blog */
+/* Dedicated SCSS */
 
 .blog {
   @include meta.load-css("blog.scss");
@@ -492,10 +525,13 @@ article {
     min-width: unset;
     width: 100%;
     border: 0;
-    max-height: 206px;
-    overflow-y: scroll;
+    max-height: 60vh; /* allow a taller nav on mobile */
+    overflow-y: auto;
     border-top: $border;
     overflow-x: hidden;
+    padding: 16px;
+    font-size: 36px;
+    line-height: 1.4;
 
     .lang-picker {
       flex-direction: row;
