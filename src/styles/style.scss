@@ -290,6 +290,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  overflow-x: hidden;
+
   hyphens: auto;
 }
 
@@ -343,7 +345,9 @@ h2 {
   padding: 16px;
   height: 100%;
   background-color: $bg;
-  overflow: auto; /* ← scroll inside this area */
+  overflow-x: hidden; /* prevent horizontal scroll from absolutely positioned children */
+  overflow-y: auto; /* allow vertical scrolling */
+  min-width: 0; /* allow children to shrink and avoid overflow inside flex layouts */
 }
 
 article {
