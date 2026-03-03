@@ -15,6 +15,7 @@
     "@astrojs/rss": "latest",
     "@astrojs/sitemap": "latest",
     "@astrojs/vercel": "latest",
+    "@vercel/analytics": "latest",
     "astro": "latest",
     "autoprefixer": "latest",
     "cssnano": "latest",
