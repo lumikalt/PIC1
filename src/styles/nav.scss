@@ -36,10 +36,16 @@
 #site-nav {
   position: fixed;
   inset: 0;
-  background: #111;
-  transform: translateX(-100%);
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: none;
+  transform: translateX(-110%);
   transition: transform 0.3s ease;
   padding: 4rem 2rem;
+}
+
+body:has(.nav-toggle:checked) {
+  overflow: hidden;
 }
 
 // Use :has() for state detection
