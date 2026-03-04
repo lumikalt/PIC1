@@ -44,7 +44,12 @@
   padding: 4rem 2rem;
 }
 
-body:has(.nav-toggle:checked) {
+body:has(.nav-toggle:checked),
+html:has(.nav-toggle:checked) {
+  overflow: hidden;
+}
+
+html {
   overflow: hidden;
 }
 
