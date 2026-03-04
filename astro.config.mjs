@@ -11,7 +11,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://localhost:4321",
+  site: "https://pic1.vercel.app",
   integrations: [mdx(), sitemap()],
   markdown: {
     remarkPlugins: [remarkMath, remarkDirective],
