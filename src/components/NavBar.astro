@@ -8,93 +8,67 @@ import LangPicker from "./LangPicker.astro";
 import { Image } from "astro:assets";
 
 const github = "https://github.com/lumikalt/pic1";
-const email = "mailto:mailto:geral.lab_in_a_cube@outlook.com"
+const email = "mailto:mailto:geral.lab_in_a_cube@outlook.com";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 ---
 
-<nav>
-  <div>
-    <LangPicker lang={lang} />
+<div class="nav-wrapper">
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" />
 
-    <hr />
+  <label
+    for="nav-toggle"
+    class="nav-toggle-label"
+    aria-label="Toggle navigation"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
 
-    <ul>
-      <li>
-        <a href={translatePath("/")} target="_self"> {t("nav.home")}</a>
-      </li>
-      <li>
-        <a href={translatePath("/about")} target="_self">{t("nav.about")}</a>
-      </li>
-      <li>
-        <a href={translatePath("/blog")} target="_self">{t("nav.posts")}</a>
-      </li>
-      <li><a href={github} target="_blank" rel="noreferrer">Github</a></li>
-      <li><a href={email} target="_blank" rel="noreferrer">Email</a></li>
-    </ul>
-  </div>
+  <nav id="site-nav">
+    <div>
+      <LangPicker lang={lang} />
+      <hr />
+      <ul>
+        <li>
+          <a href={translatePath("/")} target="_self"> {t("nav.home")}</a>
+        </li>
+        <li>
+          <a href={translatePath("/about")} target="_self">{t("nav.about")}</a>
+        </li>
+        <li>
+          <a href={translatePath("/blog")} target="_self">{t("nav.posts")}</a>
+        </li>
+        <li><a href={github} target="_blank" rel="noreferrer">Github</a></li>
+        <li><a href={email} target="_blank" rel="noreferrer">Email</a></li>
+      </ul>
+    </div>
 
-  <div>
-    <Image
-      src="/Tecnico_ID_Principal_RBG-BRANCO.png"
-      alt={t("alt.ist")}
-      class="nav-logo"
-      width="100"
-      height="100"
-    />
-    <Image
-      src="/IT.png"
-      alt={t("alt.it")}
-      class="nav-logo"
-      width="100"
-      height="100"
-    />
-    <Image
-      src="/logo.png"
-      alt={t("alt.logo")}
-      class="nav-logo"
-      width="100"
-      height="100"
-    />
-  </div>
-</nav>
-
-<!-- Hamburger toggle (static, top-left) -->
-<button id="navToggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="true" type="button">☰</button>
-
-<script>
-  (function () {
-    const btn = document.getElementById('navToggle');
-    if (!btn) return;
-    const body = document.body;
-    const NAV_HIDDEN_CLASS = 'nav-hidden';
-
-    function setAria() {
-      const b = document.getElementById('navToggle');
-      if (!b) return;
-      const expanded = !body.classList.contains(NAV_HIDDEN_CLASS);
-      b.setAttribute('aria-expanded', String(expanded));
-    }
-
-    // initialize from saved preference — hidden by default unless explicitly set to 'false'
-    try {
-      const saved = localStorage.getItem('nav-hidden');
-      if (saved === 'false') body.classList.remove(NAV_HIDDEN_CLASS);
-      else body.classList.add(NAV_HIDDEN_CLASS);
-    } catch (e) {
-      body.classList.add(NAV_HIDDEN_CLASS);
-    }
-
-    setAria();
-
-    btn.addEventListener('click', function () {
-      const hidden = body.classList.toggle(NAV_HIDDEN_CLASS);
-      try {
-        localStorage.setItem('nav-hidden', String(hidden));
-      } catch (e) {}
-      setAria();
-    });
-  })();
-</script>
+    <div>
+      <Image
+        src="/Tecnico_ID_Principal_RBG-BRANCO.png"
+        alt={t("alt.ist")}
+        class="nav-logo"
+        width="100"
+        height="100"
+      />
+      <Image
+        src="/IT.png"
+        alt={t("alt.it")}
+        class="nav-logo"
+        width="100"
+        height="100"
+      />
+      <Image
+        src="/logo.png"
+        alt={t("alt.logo")}
+        class="nav-logo"
+        width="100"
+        height="100"
+      />
+    </div>
+  </nav>
+</div>

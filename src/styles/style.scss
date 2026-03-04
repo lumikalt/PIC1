@@ -54,232 +54,7 @@ html::after {
 
 /* Navigation */
 
-nav {
-  padding: 12px;
-  min-width: 240px;
-  width: 240px;
-  height: 100%;
-  min-height: 0; /* allow nav to shrink inside the viewport */
-  overflow-y: auto; /* make nav vertically scrollable when content exceeds height */
-  -webkit-overflow-scrolling: touch;
-  background-color: $bgitem;
-  border-right: $border;
-  font-family: "DepartureMono", monospace;
-  font-size: 30px;
-  line-height: 35px;
-  text-shadow: $accent1-shadow-light;
-  color: $fg;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 0 20px $accent1;
-  box-shadow: 0px 0px 64px -28px $fg;
-  z-index: 10;
-
-  ul:not(.lang-picker) {
-    list-style-type: none;
-    padding-left: 0;
-    margin: 0;
-    /* Render links as colored buttons instead of list with separators */
-    li {
-      margin: 6px 0;
-      text-align: center;
-    }
-
-    /* Local links (internal) — outlined button with transparent background */
-    li a:not([target="_blank"]) {
-      display: block;
-      width: 100%;
-      box-sizing: border-box;
-      padding: 10px 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-family: inherit;
-      background: transparent; /* transparent interior */
-      color: $fg; /* restore previous text color */
-      border: 3px solid $accent1; /* colored outline */
-      box-shadow: none;
-      transition: transform 160ms $q-move, box-shadow 160ms $q-glow,
-        background 160ms $q-move;
-      cursor: pointer;
-    }
-
-    /* External links (open in new tab) — outlined button with transparent background */
-    li a[target="_blank"] {
-      display: block;
-      width: 100%;
-      box-sizing: border-box;
-      padding: 10px 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-family: inherit;
-      background: transparent;
-      color: $fg;
-      border: 3px solid $accent2; /* pink outline */
-      box-shadow: none;
-      transition: transform 160ms $q-move, box-shadow 160ms $q-glow,
-        background 160ms $q-move;
-      cursor: pointer;
-    }
-
-    li a:active,
-    li a:focus {
-      transform: translateY(1px);
-      outline: none;
-    }
-  }
-
-  /* Top-level home link (not inside the list) — outlined and transparent like internal links */
-  > div > a[href] {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 8px 0 12px 0;
-    padding: 10px 12px;
-    border-radius: 8px;
-    background: transparent;
-    color: $fg;
-    border: 2px solid $accent1;
-    text-decoration: none;
-    text-align: left;
-  }
-
-  /* Hover/focus: pop and glow */
-  ul:not(.lang-picker) li a:hover,
-  ul:not(.lang-picker) li a:focus,
-  ul:not(.lang-picker) > div > a[href]:hover,
-  ul:not(.lang-picker) > div > a[href]:focus {
-    background: rgba(255, 255, 255, 0.03);
-    transform: translateY(-4px) scale(1.02);
-  }
-
-  /* Accent-specific glow */
-  ul:not(.lang-picker) li a:not([target="_blank"]):hover,
-  ul:not(.lang-picker) li a:not([target="_blank"]):focus,
-  ul:not(.lang-picker) > div > a[href]:hover,
-  ul:not(.lang-picker) > div > a[href]:focus {
-    box-shadow: $accent1-shadow-heavy;
-  }
-
-  ul:not(.lang-picker) li a[target="_blank"]:hover,
-  ul:not(.lang-picker) li a[target="_blank"]:focus {
-    box-shadow: $accent2-shadow-light;
-  }
-}
-
-/* Logo placement: show in nav on desktop, show in footer on mobile */
-
-.nav-logo {
-  display: block;
-  width: 160px;
-  height: auto;
-  object-fit: contain;
-  margin: 12px auto;
-  align-self: center;
-}
-
-footer .nav-logo {
-  display: none;
-}
-
-/* IST badge in the nav above the language picker */
-.nav-badge {
-  display: block;
-  width: 140px;
-  height: auto;
-  margin: 8px auto;
-  object-fit: contain;
-}
-
-/* Badge to show at the side of the footer on desktop */
-.footer-badge {
-  display: none; /* default hidden; shown on wider screens */
-  width: 120px;
-  height: auto;
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-footer {
-  position: relative;
-}
-
-@media (max-width: 700px) {
-  /* hide in nav on small screens, show in footer */
-  nav .nav-logo {
-    display: none;
-  }
-
-  footer .nav-logo {
-    display: block !important;
-    width: 250px;
-    height: auto;
-    margin: 12px auto;
-  }
-
-  /* keep IST badge hidden on small screens to avoid overlap */
-  .footer-badge {
-    display: none;
-  }
-
-  /* Stack student photo above text on small screens */
-  .student {
-    flex-direction: column;
-    align-items: center;
-
-    gap: 12px;
-  }
-
-  .student picture,
-  .student img,
-  .photo-placeholder {
-    width: clamp(120px, 35vw, 200px);
-    height: clamp(120px, 35vw, 200px);
-    object-fit: cover;
-    flex: 0 0 auto;
-    margin: 0 auto;
-  }
-
-  .student-info {
-    text-align: left;
-  }
-}
-
-@media (min-width: 701px) {
-  /* show footer-side badge on larger screens */
-  .footer-badge {
-    display: block;
-  }
-}
-
-.lang-picker {
-  display: flex;
-  flex-direction: column;
-
-  a {
-    color: $accent1;
-    text-shadow: $accent1-shadow-light;
-    transition: $q-glow;
-    text-decoration: none;
-    font-size: 20px;
-
-    &:hover {
-      text-shadow: $accent1-shadow-heavy;
-      transition: $q-glow;
-    }
-  }
-
-  .inactive {
-    font-size: 20px;
-    color: white;
-    text-shadow: none;
-    opacity: 0.9;
-    pointer-events: none;
-  }
-}
+@include meta.load-css("nav.scss");
 
 /* Content */
 
@@ -350,9 +125,9 @@ h2 {
   padding: 16px;
   height: 100%;
   background-color: $bg;
-  overflow-x: hidden; /* prevent horizontal scroll from absolutely positioned children */
-  overflow-y: auto; /* allow vertical scrolling */
-  min-width: 0; /* allow children to shrink and avoid overflow inside flex layouts */
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-width: 0;
 }
 
 article {
@@ -400,38 +175,6 @@ article {
   height: auto;
   display: block;
   margin: 1rem auto;
-}
-
-/* Nav toggle (hamburger) */
-.nav-toggle {
-  position: fixed;
-  top: 12px;
-  left: 12px;
-  z-index: 30;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,0.03);
-  color: $fg;
-  border: 2px solid rgba(255,255,255,0.04);
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 22px;
-}
-
-/* When navigation is hidden add this class to the body */
-body.nav-hidden nav {
-  display: none;
-}
-
-/* Ensure the hamburger is visible on small screens too */
-@media (max-width: 700px) {
-  .nav-toggle {
-    left: 8px;
-    top: 8px;
-  }
 }
 
 /* Dedicated SCSS */
@@ -537,5 +280,25 @@ body.nav-hidden nav {
       flex-direction: row;
       gap: 12px;
     }
+  }
+
+  .student {
+    flex-direction: column;
+    align-items: center;
+
+    gap: 12px;
+
+    picture,
+    img {
+      width: clamp(120px, 35vw, 200px);
+      height: clamp(120px, 35vw, 200px);
+      object-fit: cover;
+      flex: 0 0 auto;
+      margin: 0 auto;
+    }
+  }
+
+  .student-info {
+    text-align: left;
   }
 }
