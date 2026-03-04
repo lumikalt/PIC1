@@ -115,12 +115,12 @@ import { Image } from "astro:assets";
           <hr />
 
           <h2>Produto</h2>
-                    
+
           <!-- TODO add alt -->
           <Image
             src="/diagrams/PIC1_sat_V2_1.png"
             alt={""}
-            class="nav-logo"
+            class="satellite-diagram"
             width="100"
             height="100"
           />
@@ -143,25 +143,29 @@ import { Image } from "astro:assets";
             combinações de sensores e aplicações.
           </p>
 
+          <br /><br />
+
           <h2>Missão</h2>
-          Simular um PocketQube em órbita a mapear uma cidade.
-
-
-Podendo rodar, podemos então executar a missão. Com uma maquete duma cidade, usamos a câmera para tirar fotos à medida que se roda o satélite. Depois, o ESP32 envia as fotos para a Estação Terrestre pelas antenas.
-
 
           <p>
             Simular um satélite PocketQube em órbita a mapear uma cidade, o mais
             próximo possível de como é realmente feito. Isso é importante
-            enfatizar, pois garante uma experiência mais envolvente e educacional,
-            já que os estudantes podem ver as aplicações do mundo real dos conceitos
-            que estão a aprender.
+            enfatizar, pois garante uma experiência mais envolvente e
+            educacional, já que os estudantes podem ver as aplicações do mundo
+            real dos conceitos que estão a aprender.
           </p>
           <p>
-            Satélites reais deste tipo, em órbita, usam magnetorques para rodar em torno do eixo da altitude. Para improvisar tal sistema podemos usar um par de ímanes de neodímio, que simulam o campo magnético terrestre, e bobinas. Isto permite, então, ter um sistema de rotação no satélite controlado pelo ESP32.
+            Satélites reais deste tipo, em órbita, usam magnetorques para rodar
+            em torno do eixo da altitude. Para improvisar tal sistema podemos
+            usar um par de ímanes de neodímio, que simulam o campo magnético
+            terrestre, e bobinas. Isto permite, então, ter um sistema de rotação
+            no satélite controlado pelo ESP32.
           </p>
           <p>
-            Com a rotação possível, podemos então executar a missão. Com uma maquete duma cidade, usamos a câmera para tirar fotos à medida que se roda o satélite. Depois, o ESP32 envia as fotos para a Estação Terrestre pelas antenas.
+            Com a rotação possível, podemos então executar a missão. Com uma
+            maquete duma cidade, usamos a câmera para tirar fotos à medida que
+            se roda o satélite. Depois, o ESP32 envia as fotos para a Estação
+            Terrestre pelas antenas.
           </p>
           <Image
             src="/diagrams/maquete.png"
