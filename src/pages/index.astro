@@ -115,7 +115,38 @@ import { Image } from "astro:assets";
             be swapped out to test different sensor combinations and
             applications.
           </p>
+
+          <h2>Our Mission</h2>
+
+          <p>
+            Simulate a PocketQube satellite in orbit mapping a city, as close as
+            possible to how it's really done. This is important to enphasize, as
+            this ensures a more engaging and educational experience, as students
+            can see the real-world applications of the concepts they're learning
+            about.
+          </p>
+          <p>
+            Real satellites of this kind have magnetorques to rotate around the
+            altitude axis. To simulate this system, we can use a pair of
+            Neodymium magnets, to simulate the magnetic field of the Earth, and
+            inductor coils. This then allows us to control the satellite's
+            rotation with the ESP32.
+          </p>
+          <p>
+            With the rotation being possible, we then move to executing the
+            mission. With a model of a city around the satellite, we use its
+            camera to take photos as it rotates. Then, the ESP32 sends the
+            photos to the Ground Station via the antenna.
+          </p>
+          <Image
+            src="/diagrams/maquete.png"
+            alt="Esquema do satélite com um mapa à sua volta, Debaixo do satélite situam-se dois ímanes. Na face frontal do cubo lê-se 'Painel Solar', na direita 'Câmera', em cima do mapa lê-se 'Magnetorque' e nos ímanes 'Neodímio'."
+            class="satellite-diagram"
+            width="850"
+            height="540"
+          />
         </main>
+
         <Footer />
       </article>
     </div>
