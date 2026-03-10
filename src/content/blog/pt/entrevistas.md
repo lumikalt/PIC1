@@ -31,7 +31,7 @@ Quando tivermos o satélite montado, temos vários contactos adicionais planeado
 
 Vamos contactar escolas nas nossas zonas para testar o produto com alunos e procurar fazer testes com alunos de licenciatura que nunca tiveram con tacto com estas áreas.
 
-Apesar de ser improvável, tentaremos também a parceria com a Agência Espacial Portuguesa e a Agência Espacial Europeia (ESA).
+Vamos contactar a Ciência Viva e, apesar de ser improvável, tentaremos também a parceria com a Agência Espacial Portuguesa e a Agência Espacial Europeia (ESA).
 
 ---
 

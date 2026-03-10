@@ -29,9 +29,9 @@ We still need to contact the IST NanoSatLab in person.
 
 After our satellite is assembled, we have several additional plans.
 
-We'll contact schools in our areas to test our product and invite some undergraduates who never interacted with these fields to try it out. 
+We'll contact schools in our areas to test our product and invite some undergraduates who never interacted with these fields to try it out.
 
-It's a long shot, but we'll also try a partnership with the Portuguese Space Agency and the European Space Agency (ESA).
+We'll contact Ciência Viva and, despite being a long-shot, we'll also try a partnership with the Portuguese Space Agency and the European Space Agency (ESA).
 
 ---
 
