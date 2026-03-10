@@ -5,41 +5,44 @@ date: 2026.03.09
 lang: en
 ---
 
-# Our Teachers
+# Entities
 
-uma mini descriçao sobre a conversa com os stores, o espaço ao cubo, lisat e o foruns
-e por tambem planos para o futuro (falar com ciencia viva, escolas e agencia espacial portuguesa)
-consegues por?
+## IT
+
+We have regular meetings with professors from the Telecommunications Institute.
+
+## EspaÇo ao Cubo (Space Squared)
+
+Still missing a formal agreement, but it's being handled and we've had a meeting with this group.
+
+They offered to help with the electronics parts and with supplying workshops.
+
+We still need a collaboration protocol to be defined in order to better define the expectations for either party, where either can help the other, and the compromises that are necessary.
+
+Lastly, and most importantly, they can help us reach the right people.
+
+## LISAT
+
+Still missing a formal agreement, but it's being handled.
+
+# Future Plans
+
+We still need to contact the IST NanoSatLab in person.
+
+<br />
+
+After our satellite is assembled, we have several additional plans.
+
+We'll contact schools in our areas to test our product and invite some undergraduates who never interacted with these fields to try it out. 
+
+It's a long shot, but we'll also try a partnership with the Portuguese Space Agency and the European Space Agency (ESA).
 
 ---
 
-# Entities
-
-## EspaÇo ao Cubo
-
-They can help with the electronics parts and provide workshops.
-
-We must define a protection/collaboration protocol to better understand what's expected from each party, our compromises with them, and in what areas either party can help with.
-
-Must consider protecting our project as Intellectual Property. Not something to worry about for now, but they suggested doing so.
-
-Finally, and importantly, they can help us reach the right people.
-
-## -Future plans-
-
-We've contacted schools in our areas, and some other groups that work in the Space area.
-
-These include:
-
-- Schools around Lisbon and Santarém
-- Ciência Viva
-- Agência Espacial Portuguesa
-- LISAT: requires going to the Tagus campus.
-
 # Data Gathering
 
-We've created a Google Forms to better understand our priorities along with the maximum price per unit we can allow.
+We've created a Google Forms to better understand our priorities and, most importantly, the max price per unit we can allow.
 
-Feel free to respond and share!
+Please fill it out and share it around!
 
 https://docs.google.com/forms/d/e/1FAIpQLSfFC3nZPD2KwNZdQ7_Wb0ZiYL8-nTn0Rbm5N4wog3Wv9LH7Gw/viewform

@@ -5,37 +5,39 @@ date: 2026.03.09
 lang: pt
 ---
 
-
-# Com os Professores
-
-uma mini descriçao sobre a conversa com os stores, o espaço ao cubo, lisat e o foruns
-e por tambem planos para o futuro (falar com ciencia viva, escolas e agencia espacial portuguesa)
-consegues por?
-
----
-
 # Entidades
 
+## IT
+
+Temos reuniões regulares com professores do Instituto de Telecomunicações.
+
 ## EspaÇo ao Cubo
+
+Ainda falta acordo formal, mas já está encaminhado e já nos reunímos com este grupo.
 
 Ofereceram-se para ajudar com as partes de eletrónica e a fornecer workshops.
 
 Requerem que seja definido um protocolo de colaboração para melhor perceber o que é esperado de cada parte, os nossos compromissos e em que áreas cada parte pode ajudar em relação à outra.
 
-Avisaram para considerar-mos protejer o nosso projeto como Propriedade Intelectual. Não é algo para nos preocuparmos agora, mas sugeriram pensarmos nisso.
-
 Finalmente, e o mais importante, podem-nos ajudar a chegar às pessoas certas.
 
-## -Planos para o Futuro-
+## LISAT
 
-Contactá-nos algumas escolas nas nossas zonas e algums grupos relacionados com a área do Espaço.
+Ainda falta acordo formal, mas já está encaminhado.
 
-Estes incluem:
+# Planos para o Futuro
 
-- Escolas por Lisboa e Santarém
-- Ciência Viva
-- Agência Espacial Portuguesa
-- LISAT (IST): requer ir ao campus do Tagus
+Ainda falta contactar o IST Nanosatlab presencialmente.
+
+<br />
+
+Quando tivermos o satélite montado, temos vários contactos adicionais planeados.
+
+Vamos contactar escolas nas nossas zonas para testar o produto com alunos e procurar fazer testes com alunos de licenciatura que nunca tiveram con tacto com estas áreas.
+
+Apesar de ser improvável, tentaremos também a parceria com a Agência Espacial Portuguesa e a Agência Espacial Europeia (ESA).
+
+---
 
 # Colheita de Dados
 
