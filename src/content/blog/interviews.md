@@ -11,7 +11,7 @@ lang: en
 
 We have regular meetings with professors from the Telecommunications Institute, namely professors Carlos Fernandes and João Felício.
 
-## EspaÇo ao Cubo and LISAT
+## EspaÇo ao Cubo + LISAT
 
 Still missing a formal agreement, but it's being handled and we've had a meeting.
 

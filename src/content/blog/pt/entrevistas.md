@@ -11,19 +11,15 @@ lang: pt
 
 Temos reuniões regulares com professores do Instituto de Telecomunicações, nomeadamente os professores Carlos Fernandes e João Felício.
 
-## EspaÇo ao Cubo
+## EspaÇo ao Cubo + LISAT
 
-Ainda falta acordo formal, mas já está encaminhado e já nos reunímos com este grupo.
+Ainda falta acordo formal, mas já está encaminhado e já nos reunímos.
 
 Ofereceram-se para ajudar com as partes de eletrónica e a fornecer workshops.
 
 Requerem que seja definido um protocolo de colaboração para melhor perceber o que é esperado de cada parte, os nossos compromissos e em que áreas cada parte pode ajudar em relação à outra.
 
 Finalmente, e o mais importante, podem-nos ajudar a chegar às pessoas certas.
-
-## LISAT
-
-Ainda falta acordo formal, mas já está encaminhado.
 
 # Planos para o Futuro
 
