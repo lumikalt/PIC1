@@ -7,23 +7,19 @@ lang: en
 
 # Entities
 
-## IT
+## IT (Instituto de Telecommunicações)
 
-We have regular meetings with professors from the Telecommunications Institute.
+We have regular meetings with professors from the Telecommunications Institute, namely professors Carlos Fernandes and João Felício.
 
-## EspaÇo ao Cubo (Space Squared)
+## EspaÇo ao Cubo and LISAT
 
-Still missing a formal agreement, but it's being handled and we've had a meeting with this group.
+Still missing a formal agreement, but it's being handled and we've had a meeting.
 
 They offered to help with the electronics parts and with supplying workshops.
 
 We still need a collaboration protocol to be defined in order to better define the expectations for either party, where either can help the other, and the compromises that are necessary.
 
 Lastly, and most importantly, they can help us reach the right people.
-
-## LISAT
-
-Still missing a formal agreement, but it's being handled.
 
 # Future Plans
 

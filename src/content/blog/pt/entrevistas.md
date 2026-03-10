@@ -7,9 +7,9 @@ lang: pt
 
 # Entidades
 
-## IT
+## IT (Instituto de Telecommunicações)
 
-Temos reuniões regulares com professores do Instituto de Telecomunicações.
+Temos reuniões regulares com professores do Instituto de Telecomunicações, nomeadamente os professores Carlos Fernandes e João Felício.
 
 ## EspaÇo ao Cubo
 
