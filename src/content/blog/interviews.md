@@ -21,7 +21,7 @@ We still need a collaboration protocol to be defined in order to better define t
 
 Lastly, and most importantly, they can help us reach the right people.
 
-# Future Plans
+# Plans
 
 We still need to contact the IST NanoSatLab in person.
 
