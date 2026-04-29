@@ -13,7 +13,7 @@
     z-index: 0;
   }
 
-  > * {
+  >* {
     position: relative;
     z-index: 1;
   }
@@ -32,7 +32,8 @@
 
   .earth-wrap {
     width: clamp(200px, 42vw, 680px);
-    height: clamp(120px, 22vw, 340px); /* show only lower portion */
+    height: clamp(120px, 22vw, 340px);
+    /* show only lower portion */
     overflow: hidden;
     position: relative;
 
@@ -48,7 +49,8 @@
 .orbit-svg {
   position: absolute;
   left: 50%;
-  top: 40%; /* move orbit down to align with visible bottom half */
+  top: 40%;
+  /* move orbit down to align with visible bottom half */
   width: 100%;
   max-width: 120%;
   height: auto;

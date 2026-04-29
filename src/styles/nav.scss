@@ -94,8 +94,10 @@ nav {
   min-width: 240px;
   width: 240px;
   height: 100%;
-  min-height: 0; /* allow nav to shrink inside the viewport */
-  overflow-y: auto; /* make nav vertically scrollable when content exceeds height */
+  min-height: 0;
+  /* allow nav to shrink inside the viewport */
+  overflow-y: auto;
+  /* make nav vertically scrollable when content exceeds height */
   -webkit-overflow-scrolling: touch;
   background-color: $bgitem;
   border-right: $border;
@@ -116,6 +118,7 @@ nav {
     list-style-type: none;
     padding-left: 0;
     margin: 0;
+
     /* Render links as colored buttons instead of list with separators */
     li {
       margin: 6px 0;
@@ -131,9 +134,12 @@ nav {
       border-radius: 8px;
       text-decoration: none;
       font-family: inherit;
-      background: transparent; /* transparent interior */
-      color: $fg; /* restore previous text color */
-      border: 3px solid $accent1; /* colored outline */
+      background: transparent;
+      /* transparent interior */
+      color: $fg;
+      /* restore previous text color */
+      border: 3px solid $accent1;
+      /* colored outline */
       box-shadow: none;
       transition: transform 160ms $q-move, box-shadow 160ms $q-glow,
         background 160ms $q-move;
@@ -151,7 +157,8 @@ nav {
       font-family: inherit;
       background: transparent;
       color: $fg;
-      border: 3px solid $accent2; /* pink outline */
+      border: 3px solid $accent2;
+      /* pink outline */
       box-shadow: none;
       transition: transform 160ms $q-move, box-shadow 160ms $q-glow,
         background 160ms $q-move;
@@ -166,7 +173,7 @@ nav {
   }
 
   /* Top-level home link (not inside the list) — outlined and transparent like internal links */
-  > div > a[href] {
+  >div>a[href] {
     display: block;
     width: 100%;
     box-sizing: border-box;
@@ -183,8 +190,8 @@ nav {
   /* Hover/focus: pop and glow */
   ul:not(.lang-picker) li a:hover,
   ul:not(.lang-picker) li a:focus,
-  ul:not(.lang-picker) > div > a[href]:hover,
-  ul:not(.lang-picker) > div > a[href]:focus {
+  ul:not(.lang-picker)>div>a[href]:hover,
+  ul:not(.lang-picker)>div>a[href]:focus {
     background: rgba(255, 255, 255, 0.03);
     transform: translateY(-4px) scale(1.02);
   }
@@ -192,8 +199,8 @@ nav {
   /* Accent-specific glow */
   ul:not(.lang-picker) li a:not([target="_blank"]):hover,
   ul:not(.lang-picker) li a:not([target="_blank"]):focus,
-  ul:not(.lang-picker) > div > a[href]:hover,
-  ul:not(.lang-picker) > div > a[href]:focus {
+  ul:not(.lang-picker)>div>a[href]:hover,
+  ul:not(.lang-picker)>div>a[href]:focus {
     box-shadow: $accent1-shadow-heavy;
   }
 
@@ -229,7 +236,8 @@ footer .nav-logo {
 
 /* Badge to show at the side of the footer on desktop */
 .footer-badge {
-  display: none; /* default hidden; shown on wider screens */
+  display: none;
+  /* default hidden; shown on wider screens */
   width: 120px;
   height: auto;
   position: absolute;
@@ -243,6 +251,7 @@ footer {
 }
 
 @media (max-width: 700px) {
+
   /* hide in nav on small screens, show in footer */
   nav .nav-logo {
     display: none;
