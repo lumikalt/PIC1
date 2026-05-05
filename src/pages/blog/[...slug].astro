@@ -6,10 +6,16 @@ type Props = CollectionEntry<"blog">;
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  return posts.map((post: Props) => ({
-    params: { slug: post.slug },
-    props: post,
-  }));
+  // Only include non-pt posts for the top-level /blog route
+  const filtered = posts.filter((p: Props) => (p.data.lang ?? "en") !== "pt");
+  return filtered.map((post: Props) => {
+    const slugParts = Array.isArray(post.slug) ? post.slug : String(post.slug).split("/");
+    const paramSlug = slugParts.length === 1 ? slugParts[0] : slugParts;
+    return {
+      params: { slug: paramSlug },
+      props: post,
+    };
+  });
 }
 
 const post = Astro.props;

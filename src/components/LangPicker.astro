@@ -42,7 +42,21 @@ if (pathWithoutLang === "//" || pathWithoutLang === "") pathWithoutLang = "/";
                 segs.splice(1, 0, l);
                 hrefPath = "/" + segs.join("/");
               }
-              return <a href={useTranslatedPath(l as any)(hrefPath)}>{label}</a>;
+              // If the path already embeds a language segment after /blog
+              // (e.g. '/blog/pt/w01'), remove that inner segment so
+              // `useTranslatedPath` can prepend the correct `/{l}` once.
+              const blogLangRx = new RegExp(`^/blog/${l}(/|$)`);
+              if (blogLangRx.test(hrefPath)) {
+                hrefPath = hrefPath.replace(blogLangRx, '/blog$1');
+              }
+
+              // Avoid double-prefixing the language segment: if hrefPath already
+              // starts with the language (e.g. '/pt/...'), don't call
+              // `useTranslatedPath` which would add another '/pt' prefix.
+              const translated = hrefPath.startsWith(`/${l}`)
+                ? hrefPath
+                : useTranslatedPath(l as any)(hrefPath);
+              return <a href={translated}>{label}</a>;
             })()
           )}
       </>
