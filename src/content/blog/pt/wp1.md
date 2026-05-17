@@ -14,3 +14,4 @@ lang: pt
 # Reuniões
 
 - Reunião com os professores do IT
+- Quarto seminário
