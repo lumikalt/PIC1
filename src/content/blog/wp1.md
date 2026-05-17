@@ -14,3 +14,4 @@ lang: en
 # Meetings
 
 - Meeting with prof. Carlos Fernandes and João Felício
+- Fourth seminar
