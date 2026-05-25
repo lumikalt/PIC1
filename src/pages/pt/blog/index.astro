@@ -33,11 +33,7 @@ const posts = (await getCollection("blog"))
             {
               posts.map((post) => {
                 // Remove leading 'pt/' from slug if present
-                const slug = typeof post.slug === "string"
-                  ? post.slug.replace(/^pt\//, "")
-                  : Array.isArray(post.slug) && post.slug[0] === "pt"
-                    ? post.slug.slice(1).join("/")
-                    : post.slug;
+                const slug = post.slug.replace(/^pt\//, "")
                 return (
                   <li>
                     <time>
