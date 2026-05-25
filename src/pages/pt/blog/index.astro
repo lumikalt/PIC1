@@ -31,18 +31,26 @@ const posts = (await getCollection("blog"))
         <main transition:animate="slide">
           <ul>
             {
-              posts.map((post) => (
-                <li>
-                  <time>
-                    {post.data.date.toLocaleDateString("zh", {
-                      day: "2-digit",
-                      month: "2-digit",
-                      year: "numeric",
-                    })}
-                  </time>
-                  <a href={`/pt/blog/${post.slug}/`}>{post.data.title}</a>
-                </li>
-              ))
+              posts.map((post) => {
+                // Remove leading 'pt/' from slug if present
+                const slug = typeof post.slug === "string"
+                  ? post.slug.replace(/^pt\//, "")
+                  : Array.isArray(post.slug) && post.slug[0] === "pt"
+                    ? post.slug.slice(1).join("/")
+                    : post.slug;
+                return (
+                  <li>
+                    <time>
+                      {post.data.date.toLocaleDateString("zh", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                      })}
+                    </time>
+                    <a href={`/pt/blog/${slug}/`}>{post.data.title}</a>
+                  </li>
+                );
+              })
             }
           </ul>
         </main>
