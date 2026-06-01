@@ -27,5 +27,8 @@ export default defineConfig({
         enabled: true
       }
     })
-  ]
+  ],
+  proxy: {
+    "/api": "http://localhost:5001"
+  }
 });

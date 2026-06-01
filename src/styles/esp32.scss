@@ -1,0 +1,89 @@
+@use "./var" as *;
+
+#status {
+  text-align: center;
+  font-size: 0.85em;
+  color: $accent1;
+  margin-bottom: 8px;
+  transition: color $q-glow;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 12px 12px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.card,
+#viewer-card,
+#motor-card {
+  background: $bg-accent;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid $shade;
+  box-shadow: $accent3-shadow-heavy;
+  transition: box-shadow $q-glow;
+}
+
+.card:hover,
+#viewer-card:hover,
+#motor-card:hover {
+  box-shadow: $accent1-shadow-heavy;
+}
+
+#viewer-card,
+#motor-card {
+  grid-column: 1 / -1;
+}
+
+.card h2,
+#viewer-card h2,
+#motor-card h2 {
+  color: $accent3;
+  font-family: "Corpta", monospace;
+  font-size: 0.95em;
+  margin-bottom: 8px;
+  text-align: center;
+  text-shadow: $accent3-shadow-heavy;
+  letter-spacing: 1px;
+}
+
+#three-container {
+  width: 100%;
+  height: 320px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid $shade;
+}
+
+#angles {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 8px;
+  font-size: 1.1em;
+}
+
+#angles span {
+  opacity: 0.7;
+}
+
+#angles b {
+  color: $accent2;
+  text-shadow: $accent2-shadow-light;
+}
+
+#motor-card {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+#motor-val {
+  font-size: 1.2em;
+  color: $accent2;
+  text-shadow: $accent2-shadow-light;
+  transition: color $q-glow, text-shadow $q-glow;
+}

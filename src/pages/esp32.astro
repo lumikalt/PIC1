@@ -1,0 +1,76 @@
+---
+import "../styles/style.scss";
+
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import NavBar from "../components/NavBar.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title="Satellite Data" description="" author="PIC1" />
+  </head>
+
+  <body>
+    <div class="scan-line"></div>
+
+    <NavBar />
+
+    <div class="frame esp32">
+      <article>
+        <header class="center">
+          <h2 transition:animate="slide">Satellite Data</h2>
+        </header>
+
+        <main transition:animate="slide">
+          <div id="status">Connecting...</div>
+
+          <div class="grid">
+            <div id="viewer-card">
+              <h2>3D Orientation</h2>
+              <div id="three-container"></div>
+              <div id="angles">
+                <span>Roll: <b id="v-roll">0.00</b>°</span>
+                <span>Pitch: <b id="v-pitch">0.00</b>°</span>
+                <span>Yaw: <b id="v-yaw">0.00</b>°</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Magnetometer (µT)</h2>
+            <canvas id="magChart" width="600" height="180"></canvas>
+          </div>
+
+          <div class="card">
+            <h2>Accelerometer (g)</h2>
+            <canvas id="accChart" width="600" height="180"></canvas>
+          </div>
+
+          <div id="motor-card">
+            <h2>Coil / Motor State</h2>
+            <div id="motor-val">—</div>
+          </div>
+        </main>
+
+        <!-- client:only → runs exclusively in the browser (no SSR) -->
+        <script>
+          import { initDashboard } from "../components/SensorGraphs";
+
+          // Wait for full DOM paint, not just DOMContentLoaded
+          if (document.readyState === "complete") {
+            initDashboard("http://localhost:5001");
+            // initDashboard("http://192.168.x.x"); // ESP32's LAN IP, no port if using port 80
+          } else {
+            window.addEventListener("load", () =>
+              initDashboard("http://localhost:5001"),
+            );
+          }
+        </script>
+
+        <Footer />
+      </article>
+    </div>
+  </body>
+</html>
