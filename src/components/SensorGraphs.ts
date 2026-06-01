@@ -8,10 +8,13 @@ const DEG2RAD = Math.PI / 180;
 type Lang = "pt" | "en";
 
 const MOTOR_TRANSLATIONS: Record<string, Record<Lang, string>> = {
-  "Parado":             { pt: "Parado",             en: "Stopped" },
-  "Frente / Ativo (+)": { pt: "Frente / Ativo (+)", en: "Forward / Active (+)" },
-  "Trás / Ativo (-)":   { pt: "Trás / Ativo (-)",   en: "Reverse / Active (-)" },
-  "Desligado":          { pt: "Desligado",           en: "Off" },
+  Parado: { pt: "Parado", en: "Stopped" },
+  "Frente / Ativo (+)": {
+    pt: "Frente / Ativo (+)",
+    en: "Forward / Active (+)",
+  },
+  "Trás / Ativo (-)": { pt: "Trás / Ativo (-)", en: "Reverse / Active (-)" },
+  Desligado: { pt: "Desligado", en: "Off" },
 };
 
 function translateMotor(value: string, lang: Lang): string {
@@ -163,6 +166,24 @@ function pushChart(chart: Chart, ...values: number[]) {
   chart.update("none");
 }
 
+// Sync radio UI to match ESP32 state reported in /data
+function syncMotorUI(motorState: string) {
+  const map: Record<string, string> = {
+    "Frente / Ativo (+)": "forward",
+    "Forward / Active (+)": "forward",
+    "Trás / Ativo (-)": "backward",
+    "Reverse / Active (-)": "backward",
+    Parado: "stop",
+    Stopped: "stop",
+  };
+  const val = map[motorState];
+  if (!val) return;
+  const radio = document.querySelector<HTMLInputElement>(
+    `input[name="motor"][value="${val}"]`,
+  );
+  if (radio && !radio.checked) radio.checked = true;
+}
+
 // ── Entry point ─────────────────────────────────────────────────────
 export function initDashboard(apiBase: string, lang: Lang = "en") {
   const container = document.getElementById("three-container")!;
@@ -185,6 +206,21 @@ export function initDashboard(apiBase: string, lang: Lang = "en") {
   const vPitch = document.getElementById("v-pitch")!;
   const vYaw = document.getElementById("v-yaw")!;
 
+  function initMotorControls(apiBase: string) {
+    const radios = document.querySelectorAll<HTMLInputElement>(
+      'input[name="motor"]',
+    );
+
+    radios.forEach((radio) => {
+      radio.addEventListener("change", () => {
+        if (!radio.checked) return;
+        fetch(`${apiBase}/motor?cmd=${radio.value}`, {
+          cache: "no-store",
+        }).catch((e) => console.warn("[Motor] command failed:", e));
+      });
+    });
+  }
+
   async function poll() {
     try {
       const d: SensorData = await fetch(`${apiBase}/data`, {
@@ -197,12 +233,14 @@ export function initDashboard(apiBase: string, lang: Lang = "en") {
       pushChart(magChart, d.mx, d.my, d.mz);
       pushChart(accChart, d.ax, d.ay, d.az);
       motorEl.textContent = translateMotor(d.motor, lang);
+      syncMotorUI(String(d.motor));
       statusEl.textContent = `[OK] Live — ${new Date().toLocaleTimeString()}`;
     } catch {
       statusEl.textContent = `[ERROR] No connection`;
     }
   }
 
+  initMotorControls(apiBase);
   setInterval(poll, API_POLL_MS);
   poll();
 }

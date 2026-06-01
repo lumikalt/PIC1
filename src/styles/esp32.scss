@@ -87,3 +87,110 @@
   text-shadow: $accent2-shadow-light;
   transition: color $q-glow, text-shadow $q-glow;
 }
+
+/* ── MOTOR SWITCHES ─────────────────────────────────────────────── */
+.switch-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.switch-btn {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+.switch-btn input {
+  position: absolute;
+  opacity: 0;
+  width: 0; height: 0;
+}
+
+.switch-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border: 2px solid $shade;
+  border-radius: 10px;
+  background: $bgitem;
+  transition: all $q-move;
+  min-width: 130px;
+}
+.switch-label .icon { font-size: 1.8em; }
+.switch-label .name {
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $fg;
+  opacity: 0.5;
+  transition: opacity $q-move, color $q-move;
+}
+
+/* Pill */
+.switch-label .pill {
+  width: 42px; height: 22px;
+  background: $shade;
+  border-radius: 11px;
+  position: relative;
+  transition: background $q-move;
+}
+.switch-label .pill::after {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: $fg;
+  opacity: 0.3;
+  top: 3px; left: 3px;
+  transition: transform $q-move, background $q-move, opacity $q-move;
+}
+
+/* Active states */
+.switch-btn input:checked + .switch-label .name { opacity: 1; }
+.switch-btn input:checked + .switch-label .pill::after {
+  transform: translateX(20px);
+  opacity: 1;
+}
+
+.switch-btn.forward input:checked + .switch-label {
+  border-color: $accent1;
+  box-shadow: $accent1-shadow-light;
+}
+.switch-btn.forward input:checked + .switch-label .name { color: $accent1; }
+.switch-btn.forward input:checked + .switch-label .pill { background: rgba(0,240,255,0.2); }
+.switch-btn.forward input:checked + .switch-label .pill::after { background: $accent1; }
+
+.switch-btn.stop input:checked + .switch-label {
+  border-color: $accent2;
+  box-shadow: $accent2-shadow-light;
+}
+.switch-btn.stop input:checked + .switch-label .name { color: $accent2; }
+.switch-btn.stop input:checked + .switch-label .pill { background: rgba(255,102,217,0.2); }
+.switch-btn.stop input:checked + .switch-label .pill::after { background: $accent2; }
+
+.switch-btn.backward input:checked + .switch-label {
+  border-color: $accent3;
+  box-shadow: $accent3-shadow-heavy;
+}
+.switch-btn.backward input:checked + .switch-label .name { color: $accent3; }
+.switch-btn.backward input:checked + .switch-label .pill { background: rgba(154,124,255,0.2); }
+.switch-btn.backward input:checked + .switch-label .pill::after { background: $accent3; }
+
+/* Status line */
+#motor-status {
+  text-align: center;
+  font-size: 0.85em;
+  color: $fg;
+  opacity: 0.6;
+}
+#motor-val {
+  color: $accent2;
+  text-shadow: $accent2-shadow-light;
+  font-weight: bold;
+  opacity: 1;
+  transition: color $q-glow, text-shadow $q-glow;
+}
