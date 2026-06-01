@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
 
 type Props = CollectionEntry<"blog">;
@@ -9,17 +9,17 @@ export async function getStaticPaths() {
   // Only include non-pt posts for the top-level /blog route
   const filtered = posts.filter((p: Props) => (p.data.lang ?? "en") !== "pt");
   return filtered.map((post: Props) => {
-    const slugParts = Array.isArray(post.slug) ? post.slug : String(post.slug).split("/");
-    const paramSlug = slugParts.length === 1 ? slugParts[0] : slugParts;
+    const idParts = Array.isArray(post.id) ? post.id : String(post.id).split("/");
+    const paramid = idParts.length === 1 ? idParts[0] : idParts;
     return {
-      params: { slug: paramSlug },
+      params: { id: paramid },
       props: post,
     };
   });
 }
 
 const post = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <BlogPost {...post.data}>

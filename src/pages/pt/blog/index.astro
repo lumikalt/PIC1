@@ -32,8 +32,8 @@ const posts = (await getCollection("blog"))
           <ul>
             {
               posts.map((post) => {
-                // Remove leading 'pt/' from slug if present
-                const slug = post.slug.replace(/^pt\//, "")
+                // Remove leading 'pt/' from id if present
+                const id = post.id.replace(/^pt\//, "")
                 return (
                   <li>
                     <time>
@@ -43,7 +43,7 @@ const posts = (await getCollection("blog"))
                         year: "numeric",
                       })}
                     </time>
-                    <a href={`/pt/blog/${slug}/`}>{post.data.title}</a>
+                    <a href={`/pt/blog/${id}/`}>{post.data.title}</a>
                   </li>
                 );
               })

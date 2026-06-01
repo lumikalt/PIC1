@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry, render } from "astro:content";
 import BlogPost from "../../../layouts/BlogPost.astro";
 
 type Props = CollectionEntry<"blog">;
@@ -10,22 +10,23 @@ export async function getStaticPaths() {
   const filtered = posts.filter((p: Props) => (p.data.lang ?? "en") === "pt");
 
   return filtered.map((post: Props) => {
-    // Normalize slug: remove leading 'pt' from slug parts when present,
+    // Normalize id: remove leading 'pt' from id parts when present,
     // then supply a string for single-segment slugs or an array for multi.
-    const slugParts = Array.isArray(post.slug) ? post.slug : String(post.slug).split("/");
-    const parts = slugParts[0] === "pt" ? slugParts.slice(1) : slugParts;
-    const paramSlug = parts.length === 1 ? parts[0] : parts;
+    const idParts = Array.isArray(post.id) ? post.id : String(post.id).split("/");
+    const parts = idParts[0] === "pt" ? idParts.slice(1) : idParts;
+    const paramid = parts.length === 1 ? parts[0] : parts;
+    
     return {
-      params: { slug: paramSlug },
+      params: { id: paramid },
       props: post,
     };
   });
 }
 
 const post = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
-// const { lang, slug } = Astro.params;
+// const { lang, id } = Astro.params;
 ---
 
 <BlogPost {...post.data}>

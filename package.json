@@ -18,15 +18,18 @@
     "@vercel/analytics": "latest",
     "astro": "latest",
     "autoprefixer": "latest",
+    "chart.js": "latest",
     "cssnano": "latest",
     "rehype-katex": "latest",
     "remark-directive": "latest",
     "remark-math": "latest",
     "rollup": "latest",
     "sass": "latest",
-    "sharp": "latest"
+    "sharp": "latest",
+    "three": "latest"
   },
   "devDependencies": {
+    "@types/three": "latest",
     "unist-util-visit": "latest"
   },
   "packageManager": "pnpm@10.26.0+sha512.3b3f6c725ebe712506c0ab1ad4133cf86b1f4b687effce62a9b38b4d72e3954242e643190fc51fa1642949c735f403debd44f5cb0edd657abe63a8b6a7e1e402"
