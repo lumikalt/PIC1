@@ -49,48 +49,43 @@ import NavBar from "../components/NavBar.astro";
           </div>
 
           <div id="motor-card">
-            <h2>Coil / Motor State</h2>
-            <div id="motor-val">—</div>
+            <h2>Motor Control</h2>
+
+            <div class="switch-group">
+              <label class="switch-btn forward">
+                <input type="radio" name="motor" value="forward" />
+                <div class="switch-label">
+                  <span class="icon">⬆️</span>
+                  <span class="name">Forward</span>
+                  <div class="pill"></div>
+                </div>
+              </label>
+
+              <label class="switch-btn stop">
+                <input type="radio" name="motor" value="stop" defaultChecked />
+                <div class="switch-label">
+                  <span class="icon">⏹️</span>
+                  <span class="name">Stop</span>
+                  <div class="pill"></div>
+                </div>
+              </label>
+
+              <label class="switch-btn backward">
+                <input type="radio" name="motor" value="backward" />
+                <div class="switch-label">
+                  <span class="icon">⬇️</span>
+                  <span class="name">Reverse</span>
+                  <div class="pill"></div>
+                </div>
+              </label>
+            </div>
+
+            <p id="motor-status">
+              Current state:
+              <span id="motor-val">—</span>
+            </p>
           </div>
         </main>
-
-        <div id="motor-card">
-          <h2>Motor Control</h2>
-
-          <div class="switch-group">
-            <label class="switch-btn forward">
-              <input type="radio" name="motor" value="forward" />
-              <div class="switch-label">
-                <span class="icon">⬆️</span>
-                <span class="name">Forward</span>
-                <div class="pill"></div>
-              </div>
-            </label>
-
-            <label class="switch-btn stop">
-              <input type="radio" name="motor" value="stop" defaultChecked />
-              <div class="switch-label">
-                <span class="icon">⏹️</span>
-                <span class="name">Stop</span>
-                <div class="pill"></div>
-              </div>
-            </label>
-
-            <label class="switch-btn backward">
-              <input type="radio" name="motor" value="backward" />
-              <div class="switch-label">
-                <span class="icon">⬇️</span>
-                <span class="name">Reverse</span>
-                <div class="pill"></div>
-              </div>
-            </label>
-          </div>
-
-          <p id="motor-status">
-            Current state:
-            <span id="motor-val">—</span>
-          </p>
-        </div>
 
         <!-- client:only → runs exclusively in the browser (no SSR) -->
         <script>
