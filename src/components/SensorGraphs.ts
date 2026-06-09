@@ -7,18 +7,20 @@ const DEG2RAD = Math.PI / 180;
 
 type Lang = "pt" | "en";
 
-const MOTOR_TRANSLATIONS: Record<string, Record<Lang, string>> = {
-  Parado: { pt: "Parado", en: "Stopped" },
-  "Frente / Ativo (+)": {
-    pt: "Frente / Ativo (+)",
-    en: "Forward / Active (+)",
-  },
-  "Trás / Ativo (-)": { pt: "Trás / Ativo (-)", en: "Reverse / Active (-)" },
-  Desligado: { pt: "Desligado", en: "Off" },
-};
-
-function translateMotor(value: string, lang: Lang): string {
-  return MOTOR_TRANSLATIONS[value]?.[lang] ?? value; // fallback: return as-is
+// Motor string format from firmware: "Left | Motor A: + | Motor B: 0"
+// Maps the leading word to the button data-cmd value
+function motorStringToCmd(motor: string): string {
+  const s = motor.toLowerCase();
+  if (s.startsWith("left"))     return "pos1";
+  if (s.startsWith("front"))    return "pos2";
+  if (s.startsWith("right"))    return "pos3";
+  if (s.startsWith("sequence")) return "auto";
+  // Portuguese fallbacks
+  if (s.startsWith("esquerda")) return "pos1";
+  if (s.startsWith("frente"))   return "pos2";
+  if (s.startsWith("direita"))  return "pos3";
+  if (s.startsWith("sequência") || s.startsWith("sequencia")) return "auto";
+  return "stop";
 }
 
 interface SensorData {
@@ -36,6 +38,7 @@ interface SensorData {
 }
 
 // ── Three.js ────────────────────────────────────────────────────────
+// Model kept exactly as defined — satellite with solar panel, camera, back details
 function initThree(container: HTMLElement) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
@@ -66,11 +69,11 @@ function initThree(container: HTMLElement) {
   group.add(chip);
 
   const solar = new THREE.Mesh(
-    new THREE.BoxGeometry(.05, 0.6, 0.6),
+    new THREE.BoxGeometry(0.05, 0.6, 0.6),
     new THREE.MeshPhongMaterial({ color: 0x0000bb, reflectivity: 0.2 }),
   );
   solar.position.set(0.501, 0, 0);
-  
+
   const camera_hole = new THREE.Mesh(
     new THREE.CylinderGeometry(0.2, 0.2, 0.2, 8),
     new THREE.MeshBasicMaterial({ color: 0x000000 }),
@@ -85,24 +88,28 @@ function initThree(container: HTMLElement) {
   );
   back1.position.set(0, 0.2, -0.51);
   group.add(back1);
+
   const red1 = new THREE.Mesh(
     new THREE.BoxGeometry(0.2, 0.05, 0.02),
     new THREE.MeshPhongMaterial({ color: 0xff0000 }),
   );
   red1.position.set(-0.25, 0.25, -0.51);
   group.add(red1);
+
   const back2 = new THREE.Mesh(
     new THREE.BoxGeometry(0.7, 0.05, 0.02),
     new THREE.MeshPhongMaterial({ color: 0x4ab9a3 }),
   );
   back2.position.set(0, 0.05, -0.51);
   group.add(back2);
+
   const red2 = new THREE.Mesh(
     new THREE.BoxGeometry(0.2, 0.05, 0.02),
     new THREE.MeshPhongMaterial({ color: 0xff0000 }),
   );
   red2.position.set(0.2, 0.1, -0.51);
   group.add(red2);
+
   const back3 = new THREE.Mesh(
     new THREE.BoxGeometry(0.7, 0.3, 0.02),
     new THREE.MeshPhongMaterial({ color: 0xffffff }),
@@ -170,7 +177,6 @@ function makeChart(id: string, labels: string[], colors: string[]): Chart {
   });
 
   return new Chart(ctx, {
-    // ← pass ctx directly, not the element
     type: "line",
     data: {
       labels: [],
@@ -200,22 +206,34 @@ function pushChart(chart: Chart, ...values: number[]) {
   chart.update("none");
 }
 
-// Sync radio UI to match ESP32 state reported in /data
+// ── Motor controls ───────────────────────────────────────────────────
+function initMotorControls(apiBase: string) {
+  const buttons =
+    document.querySelectorAll<HTMLButtonElement>(".switch-btn");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const cmd = btn.dataset.cmd;
+      if (!cmd) return;
+
+      // Optimistic UI update
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      fetch(`${apiBase}/motor?cmd=${cmd}`, { cache: "no-store" }).catch((e) =>
+        console.warn("[Motor] command failed:", e),
+      );
+    });
+  });
+}
+
 function syncMotorUI(motorState: string) {
-  const map: Record<string, string> = {
-    "Frente / Ativo (+)": "forward",
-    "Forward / Active (+)": "forward",
-    "Trás / Ativo (-)": "backward",
-    "Reverse / Active (-)": "backward",
-    Parado: "stop",
-    Stopped: "stop",
-  };
-  const val = map[motorState];
-  if (!val) return;
-  const radio = document.querySelector<HTMLInputElement>(
-    `input[name="motor"][value="${val}"]`,
-  );
-  if (radio && !radio.checked) radio.checked = true;
+  const cmd = motorStringToCmd(motorState);
+  const buttons =
+    document.querySelectorAll<HTMLButtonElement>(".switch-btn");
+  buttons.forEach((b) => {
+    b.classList.toggle("active", b.dataset.cmd === cmd);
+  });
 }
 
 // ── Entry point ─────────────────────────────────────────────────────
@@ -240,20 +258,7 @@ export function initDashboard(apiBase: string, lang: Lang = "en") {
   const vPitch = document.getElementById("v-pitch")!;
   const vYaw = document.getElementById("v-yaw")!;
 
-  function initMotorControls(apiBase: string) {
-    const radios = document.querySelectorAll<HTMLInputElement>(
-      'input[name="motor"]',
-    );
-
-    radios.forEach((radio) => {
-      radio.addEventListener("change", () => {
-        if (!radio.checked) return;
-        fetch(`${apiBase}/motor?cmd=${radio.value}`, {
-          cache: "no-store",
-        }).catch((e) => console.warn("[Motor] command failed:", e));
-      });
-    });
-  }
+  initMotorControls(apiBase);
 
   async function poll() {
     try {
@@ -266,15 +271,14 @@ export function initDashboard(apiBase: string, lang: Lang = "en") {
       vYaw.textContent = d.yaw.toFixed(2);
       pushChart(magChart, d.mx, d.my, d.mz);
       pushChart(accChart, d.ax, d.ay, d.az);
-      motorEl.textContent = translateMotor(d.motor, lang);
-      syncMotorUI(String(d.motor));
+      motorEl.textContent = d.motor;
+      syncMotorUI(d.motor);
       statusEl.textContent = `[OK] Live — ${new Date().toLocaleTimeString()}`;
     } catch {
       statusEl.textContent = `[ERROR] No connection`;
     }
   }
 
-  initMotorControls(apiBase);
   setInterval(poll, API_POLL_MS);
   poll();
 }

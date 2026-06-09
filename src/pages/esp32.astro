@@ -52,32 +52,45 @@ import NavBar from "../components/NavBar.astro";
             <h2>Motor Control</h2>
 
             <div class="switch-group">
-              <label class="switch-btn forward">
-                <input type="radio" name="motor" value="forward" />
+              <button type="button" class="switch-btn pos1" data-cmd="pos1">
                 <div class="switch-label">
-                  <span class="icon">⬆️</span>
-                  <span class="name">Forward</span>
+                  <span class="icon">←</span>
+                  <span class="name">Left</span>
                   <div class="pill"></div>
                 </div>
-              </label>
+              </button>
 
-              <label class="switch-btn stop">
-                <input type="radio" name="motor" value="stop" defaultChecked />
+              <button type="button" class="switch-btn pos2" data-cmd="pos2">
                 <div class="switch-label">
-                  <span class="icon">⏹️</span>
+                  <span class="icon">↑</span>
+                  <span class="name">Front</span>
+                  <div class="pill"></div>
+                </div>
+              </button>
+
+              <button type="button" class="switch-btn pos3" data-cmd="pos3">
+                <div class="switch-label">
+                  <span class="icon">→</span>
+                  <span class="name">Right</span>
+                  <div class="pill"></div>
+                </div>
+              </button>
+
+              <button type="button" class="switch-btn auto" data-cmd="auto">
+                <div class="switch-label">
+                  <span class="icon">🔁</span>
+                  <span class="name">Sequence</span>
+                  <div class="pill"></div>
+                </div>
+              </button>
+
+              <button type="button" class="switch-btn stop active" data-cmd="stop">
+                <div class="switch-label">
+                  <span class="icon">⏹</span>
                   <span class="name">Stop</span>
                   <div class="pill"></div>
                 </div>
-              </label>
-
-              <label class="switch-btn backward">
-                <input type="radio" name="motor" value="backward" />
-                <div class="switch-label">
-                  <span class="icon">⬇️</span>
-                  <span class="name">Reverse</span>
-                  <div class="pill"></div>
-                </div>
-              </label>
+              </button>
             </div>
 
             <p id="motor-status">
@@ -87,14 +100,12 @@ import NavBar from "../components/NavBar.astro";
           </div>
         </main>
 
-        <!-- client:only → runs exclusively in the browser (no SSR) -->
         <script>
           import { initDashboard } from "../components/SensorGraphs";
 
-          // Wait for full DOM paint, not just DOMContentLoaded
           if (document.readyState === "complete") {
             initDashboard("http://localhost:5001");
-            // initDashboard("http://192.168.x.x"); // ESP32's LAN IP, no port if using port 80
+            // initDashboard("http://192.168.x.x"); // ESP32's LAN IP
           } else {
             window.addEventListener("load", () =>
               initDashboard("http://localhost:5001"),

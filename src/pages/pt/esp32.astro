@@ -48,43 +48,56 @@ import NavBar from "../../components/NavBar.astro";
             <canvas id="accChart" width="600" height="180"></canvas>
           </div>
 
-        <div id="motor-card">
-          <h2>Controlo do Motor</h2>
+          <div id="motor-card">
+            <h2>Controlo do Motor</h2>
 
-          <div class="switch-group">
-            <label class="switch-btn forward">
-              <input type="radio" name="motor" value="forward" />
-              <div class="switch-label">
-                <span class="icon">⬆️</span>
-                <span class="name">Frente</span>
-                <div class="pill"></div>
-              </div>
-            </label>
+            <div class="switch-group">
+              <button type="button" class="switch-btn pos1" data-cmd="pos1">
+                <div class="switch-label">
+                  <span class="icon">←</span>
+                  <span class="name">Esquerda</span>
+                  <div class="pill"></div>
+                </div>
+              </button>
 
-            <label class="switch-btn stop">
-              <input type="radio" name="motor" value="stop" defaultChecked />
-              <div class="switch-label">
-                <span class="icon">⏹️</span>
-                <span class="name">Parado</span>
-                <div class="pill"></div>
-              </div>
-            </label>
+              <button type="button" class="switch-btn pos2" data-cmd="pos2">
+                <div class="switch-label">
+                  <span class="icon">↑</span>
+                  <span class="name">Frente</span>
+                  <div class="pill"></div>
+                </div>
+              </button>
 
-            <label class="switch-btn backward">
-              <input type="radio" name="motor" value="backward" />
-              <div class="switch-label">
-                <span class="icon">⬇️</span>
-                <span class="name">Trás</span>
-                <div class="pill"></div>
-              </div>
-            </label>
+              <button type="button" class="switch-btn pos3" data-cmd="pos3">
+                <div class="switch-label">
+                  <span class="icon">→</span>
+                  <span class="name">Direita</span>
+                  <div class="pill"></div>
+                </div>
+              </button>
+
+              <button type="button" class="switch-btn auto" data-cmd="auto">
+                <div class="switch-label">
+                  <span class="icon">🔁</span>
+                  <span class="name">Sequência</span>
+                  <div class="pill"></div>
+                </div>
+              </button>
+
+              <button type="button" class="switch-btn stop active" data-cmd="stop">
+                <div class="switch-label">
+                  <span class="icon">⏹</span>
+                  <span class="name">Parado</span>
+                  <div class="pill"></div>
+                </div>
+              </button>
+            </div>
+
+            <p id="motor-status">
+              Estado atual:
+              <span id="motor-val">—</span>
+            </p>
           </div>
-
-          <p id="motor-status">
-            Estado atual:
-            <span id="motor-val">—</span>
-          </p>
-        </div>
         </main>
 
         <!-- client:only → runs exclusively in the browser (no SSR) -->
