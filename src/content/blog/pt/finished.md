@@ -19,7 +19,12 @@ With this, we completed the final implementation of the project, together with t
 <img src="/progress/finished/3.jpeg" alt="" width=400>
 <img src="/progress/finished/4.jpeg" alt="" width=400>
 
+> The faces of the satellite
+
 <img src="/diagrams/maquete.jpg" alt="">
 
+> Satellite in its presentation model 
 
 <img src="/progress/finished/poster.png" alt="">
+
+> Finished poster
