@@ -58,30 +58,32 @@ function initThree(container: HTMLElement) {
   scene.add(dir);
 
   const group = new THREE.Group();
-  group.add(
-    new THREE.Mesh(
-      new THREE.BoxGeometry(3, 0.15, 2),
-      new THREE.MeshPhongMaterial({ color: 0x1a6b1a }),
-    ),
-  );
-  const chip = new THREE.Mesh(
-    new THREE.BoxGeometry(0.8, 0.12, 0.8),
-    new THREE.MeshPhongMaterial({ color: 0x222222 }),
-  );
-  chip.position.set(0, 0.135, 0);
-  group.add(chip);
 
-  const ant = new THREE.Mesh(
-    new THREE.BoxGeometry(0.15, 0.4, 0.05),
+  const chip = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshPhongMaterial({ color: 0x888888 }),
   );
-  ant.position.set(1.35, 0.27, 0);
-  group.add(ant);
+  group.add(chip);
+
+  const solar = new THREE.Mesh(
+    new THREE.BoxGeometry(.05, 0.6, 0.6),
+    new THREE.MeshPhongMaterial({ color: 0x333333, reflectivity: 0.2 }),
+  );
+  solar.position.set(0.501, 0, 0);
+  
+  const camera_hole = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.2, 0.2, 0.2, 5),
+    new THREE.MeshBasicMaterial({ color: 0x000000 }),
+  );
+  camera_hole.position.set(0, 0, 0.55);
+  group.add(camera_hole);
+
+  group.add(solar);
   group.add(new THREE.AxesHelper(1.8));
   scene.add(group);
 
   const grid = new THREE.GridHelper(10, 20, 0x334455, 0x223344);
-  grid.position.y = -1.5;
+  grid.position.y = -1;
   scene.add(grid);
 
   let targetRoll = 0,
