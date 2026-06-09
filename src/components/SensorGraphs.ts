@@ -67,16 +67,48 @@ function initThree(container: HTMLElement) {
 
   const solar = new THREE.Mesh(
     new THREE.BoxGeometry(.05, 0.6, 0.6),
-    new THREE.MeshPhongMaterial({ color: 0x333333, reflectivity: 0.2 }),
+    new THREE.MeshPhongMaterial({ color: 0x0000bb, reflectivity: 0.2 }),
   );
   solar.position.set(0.501, 0, 0);
   
   const camera_hole = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.2, 0.2, 0.2, 5),
+    new THREE.CylinderGeometry(0.2, 0.2, 0.2, 8),
     new THREE.MeshBasicMaterial({ color: 0x000000 }),
   );
   camera_hole.position.set(0, 0, 0.55);
+  camera_hole.rotation.x = Math.PI / 2;
   group.add(camera_hole);
+
+  const back1 = new THREE.Mesh(
+    new THREE.BoxGeometry(0.7, 0.05, 0.02),
+    new THREE.MeshPhongMaterial({ color: 0x4ab9a3 }),
+  );
+  back1.position.set(0, 0.2, -0.51);
+  group.add(back1);
+  const red1 = new THREE.Mesh(
+    new THREE.BoxGeometry(0.2, 0.05, 0.02),
+    new THREE.MeshPhongMaterial({ color: 0xff0000 }),
+  );
+  red1.position.set(-0.25, 0.25, -0.51);
+  group.add(red1);
+  const back2 = new THREE.Mesh(
+    new THREE.BoxGeometry(0.7, 0.05, 0.02),
+    new THREE.MeshPhongMaterial({ color: 0x4ab9a3 }),
+  );
+  back2.position.set(0, 0.05, -0.51);
+  group.add(back2);
+  const red2 = new THREE.Mesh(
+    new THREE.BoxGeometry(0.2, 0.05, 0.02),
+    new THREE.MeshPhongMaterial({ color: 0xff0000 }),
+  );
+  red2.position.set(0.2, 0.1, -0.51);
+  group.add(red2);
+  const back3 = new THREE.Mesh(
+    new THREE.BoxGeometry(0.7, 0.3, 0.02),
+    new THREE.MeshPhongMaterial({ color: 0xffffff }),
+  );
+  back3.position.set(0, -0.2, -0.51);
+  group.add(back3);
 
   group.add(solar);
   group.add(new THREE.AxesHelper(1.8));
