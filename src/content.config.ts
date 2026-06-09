@@ -13,6 +13,7 @@ const blog = defineCollection({
 
     latex: z.boolean().optional(),
     lang: z.string().optional(),
+    last: z.boolean().optional(),
   }),
 });
 

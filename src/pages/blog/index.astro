@@ -6,9 +6,18 @@ import Footer from "../../components/Footer.astro";
 import NavBar from "../../components/NavBar.astro";
 import { getCollection } from "astro:content";
 
+var last = null;
+
 const posts = (await getCollection("blog"))
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
-  .filter((post) => post.data.lang === "en");
+  .filter((post) => post.data.lang === "en")
+  .filter((post) => {
+    if (post.data.last) {
+      last = post;
+      return false;
+    }
+    return true;
+  });
 ---
 
 <!DOCTYPE html>
@@ -44,6 +53,23 @@ const posts = (await getCollection("blog"))
                 </li>
               ))
             }
+
+            <li>
+              {last ? (
+                <>
+                  <time>
+                    {last!.data.date.toLocaleDateString("zh", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    })}
+                  </time>
+                  <a href={`/blog/${last!.id}/`}>{last!.data.title}</a>
+                </>
+              ) : (
+                "No more posts"
+              )}
+            </li>
           </ul>
         </main>
 
