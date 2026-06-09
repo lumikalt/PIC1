@@ -13,3 +13,8 @@ Our project consists of an educational prototype of an ESP32-based PocketQube, c
 In the final version, we were able to control the direction of the current in the coils through the H-Bridges, allowing us to observe the rotation of the cube in the presence of an external magnetic field. Despite some limitations encountered during testing, the prototype was able to demonstrate the intended overall functionality.
 
 With this, we completed the final implementation of the project, together with the blog, the graphical interface, the poster, the pitch deck, and the presentation video.
+
+<img src="/progress/finished/1.jpeg" alt="" width=400>
+<img src="/progress/finished/2.jpeg" alt="" width=400>
+<img src="/progress/finished/3.jpeg" alt="" width=400>
+<img src="/progress/finished/4.jpeg" alt="" width=400>

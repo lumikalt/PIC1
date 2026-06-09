@@ -12,3 +12,8 @@ O nosso projeto consiste num protótipo educativo de um PocketQube baseado em ES
 
 Na versão final, conseguimos controlar o sentido da corrente nas bobinas através das H-Bridges, permitindo observar a rotação do cubo perante um campo magnético externo. Apesar de algumas limitações encontradas durante os testes, o protótipo conseguiu demonstrar o funcionamento geral pretendido.
 Com isto, concluímos a implementação final do projeto, juntamente com o blogue, a interface gráfica, o poster, o pitch deck e o vídeo de apresentação.
+
+<img src="/progress/finished/1.jpeg" alt="" width=400>
+<img src="/progress/finished/2.jpeg" alt="" width=400>
+<img src="/progress/finished/3.jpeg" alt="" width=400>
+<img src="/progress/finished/4.jpeg" alt="" width=400>
