@@ -11,6 +11,13 @@ var last = null;
 const posts = (await getCollection("blog"))
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
   .filter((post) => post.data.lang === "pt")
+  .map((post) => {
+    // Remove leading 'pt/' from id if present
+    return {
+      ...post,
+      id: post.id.replace(/^pt\//, ""),
+    };
+  })
   .filter((post) => {
     if (post.data.last) {
       last = post;
@@ -40,22 +47,18 @@ const posts = (await getCollection("blog"))
         <main transition:animate="slide">
           <ul>
             {
-              posts.map((post) => {
-                // Remove leading 'pt/' from id if present
-                const id = post.id.replace(/^pt\//, "");
-                return (
-                  <li>
-                    <time>
-                      {post.data.date.toLocaleDateString("zh", {
-                        day: "2-digit",
-                        month: "2-digit",
-                        year: "numeric",
-                      })}
-                    </time>
-                    <a href={`/pt/blog/${id}/`}>{post.data.title}</a>
-                  </li>
-                );
-              })
+              posts.map((post) => (
+                <li>
+                  <time>
+                    {post.data.date.toLocaleDateString("zh", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    })}
+                  </time>
+                  <a href={`/pt/blog/${post.id}/`}>{post.data.title}</a>
+                </li>
+              ))
             }
 
             <li>
