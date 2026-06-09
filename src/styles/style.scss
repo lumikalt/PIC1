@@ -189,10 +189,6 @@ article {
   @include meta.load-css("home.scss");
 }
 
-.esp32 {
-  @include meta.load-css("esp32.scss");
-}
-
 /* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
