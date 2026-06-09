@@ -17,3 +17,8 @@ Com isto, concluímos a implementação final do projeto, juntamente com o blogu
 <img src="/progress/finished/2.jpeg" alt="" width=400>
 <img src="/progress/finished/3.jpeg" alt="" width=400>
 <img src="/progress/finished/4.jpeg" alt="" width=400>
+
+<img src="/diagrams/maquete.jpg" alt="">
+
+
+<img src="/progress/finished/poster.png" alt="">
