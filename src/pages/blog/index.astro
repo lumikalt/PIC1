@@ -55,20 +55,16 @@ const posts = (await getCollection("blog"))
             }
 
             <li>
-              {last ? (
-                <>
-                  <time>
-                    {last!.data.date.toLocaleDateString("zh", {
-                      day: "2-digit",
-                      month: "2-digit",
-                      year: "numeric",
-                    })}
-                  </time>
-                  <a href={`/blog/${last!.id}/`}>{last!.data.title}</a>
-                </>
-              ) : (
-                "No more posts"
-              )}
+              <time>
+                {
+                  last!.data.date.toLocaleDateString("zh", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric",
+                  })
+                }
+              </time>
+              <a href={`/blog/${last!.id}/`}>{last!.data.title}</a>
             </li>
           </ul>
         </main>
