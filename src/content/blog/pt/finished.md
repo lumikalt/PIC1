@@ -6,25 +6,24 @@ lang: pt
 last: true
 ---
 
-It was during this final week that we completed the development of our project. Over the past few weeks, we went through several stages, including planning, testing, assembly, soldering, component integration, and final validation of the prototype.
+Foi nesta última semana que demos por concluído o desenvolvimento do nosso projeto. Ao longo das últimas semanas, passámos pelas várias fases de planeamento, testes, montagem, soldadura, integração dos componentes e validação final do protótipo.
 
-Our project consists of an educational prototype of an ESP32-based PocketQube, created to demonstrate some of the main subsystems of a small satellite. The system includes sensors for data collection, a graphical interface for real-time visualization, a camera to simulate the capture of images of the Earth, a power system with a battery and solar panels, and an attitude control system based on magnetorquers.
+O nosso projeto consiste num protótipo educativo de um PocketQube baseado em ESP32, criado para demonstrar alguns dos principais subsistemas de um pequeno satélite. O sistema inclui sensores para recolha de dados, uma interface gráfica para visualização em tempo real, uma câmara para simular a captação de imagens da Terra, um sistema de alimentação com bateria e painéis solares, e um sistema de controlo de atitude baseado em magnetorquers.
 
-In the final version, we were able to control the direction of the current in the coils through the H-Bridges, allowing us to observe the rotation of the cube in the presence of an external magnetic field. Despite some limitations encountered during testing, the prototype was able to demonstrate the intended overall functionality.
-
-With this, we completed the final implementation of the project, together with the blog, the graphical interface, the poster, the pitch deck, and the presentation video.
+Na versão final, conseguimos controlar o sentido da corrente nas bobinas através das H-Bridges, permitindo observar a rotação do cubo perante um campo magnético externo. Apesar de algumas limitações encontradas durante os testes, o protótipo conseguiu demonstrar o funcionamento geral pretendido.
+Com isto, concluímos a implementação final do projeto, juntamente com o blogue, a interface gráfica, o poster, o pitch deck e o vídeo de apresentação.
 
 <img src="/progress/finished/1.jpeg" alt="" width=400>
 <img src="/progress/finished/2.jpeg" alt="" width=400>
 <img src="/progress/finished/3.jpeg" alt="" width=400>
 <img src="/progress/finished/4.jpeg" alt="" width=400>
 
-> The faces of the satellite
+> As faces do satélite
 
 <img src="/diagrams/maquete.jpg" alt="">
 
-> Satellite in its presentation model 
+> Satélite na maquete
 
 <img src="/progress/finished/poster.png" alt="">
 
-> Finished poster
+> Poster finalizado
