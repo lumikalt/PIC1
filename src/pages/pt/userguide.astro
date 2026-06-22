@@ -1,0 +1,36 @@
+---
+import "../styles/style.scss";
+
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import NavBar from "../../components/NavBar.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title="User's Guide" description="" author="PIC1" />
+  </head>
+
+  <body>
+    <div class="scan-line"></div>
+    
+    <NavBar />
+
+    <div class="frame">
+      <article>
+        <header class="center">
+          <h2 transition:animate="slide">Guia do Utilizador</h2>
+        </header>
+
+        <main transition:animate="slide">
+          <p>Bem-vindo ao Guia do Utilizador!</p>
+
+          <!-- Load PDF from /userguide.pdf -->
+          <iframe src="/userguide.pdf" width="100%" height="600px"></iframe>
+        </main>
+        <Footer />
+      </article>
+    </div>
+  </body>
+</html>
